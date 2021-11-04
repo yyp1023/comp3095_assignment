@@ -1,10 +1,13 @@
 package ca.gbc.recipe.model;
 
+import java.util.Set;
+
 public class User extends BaseEntity {
     private String firstname;
     private String lastname;
     private String username;
     private String password;
+    private Set<Recipe> favorites;
 
     public String getFirstname() {
         return firstname;
@@ -36,5 +39,13 @@ public class User extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Recipe> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<Recipe> favorites) {
+        this.favorites = favorites;
     }
 }
