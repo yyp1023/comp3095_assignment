@@ -7,3 +7,4 @@ import java.util.Set;
 public interface RecipeService extends CrudService<Recipe, Long> {
     Recipe findByName(String name);
 }
+
