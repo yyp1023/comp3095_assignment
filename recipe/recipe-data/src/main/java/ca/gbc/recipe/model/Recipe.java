@@ -1,10 +1,11 @@
 package ca.gbc.recipe.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 public class Recipe extends BaseEntity {
     private String name;
-    private User user;
+//    private User user;
     private Set<String> equipments;
     private Set<String> ingredients;
     private String description;
@@ -19,13 +20,13 @@ public class Recipe extends BaseEntity {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Set<String> getEquipments() {
         return equipments;

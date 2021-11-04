@@ -19,7 +19,7 @@ public class UserController {
 
     @RequestMapping({"", "/", "/index", "index.html"})
     public String listUser(Model model) {
-        //model.addAttribute("users", userService.findAll());
+//        model.addAttribute("users", userService.findAll());
         return "users/index";
     }
 
