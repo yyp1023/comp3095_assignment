@@ -1,25 +1,31 @@
 package ca.gbc.recipe.bootstrap;
 
+import ca.gbc.recipe.model.PlanMeal;
 import ca.gbc.recipe.model.Recipe;
 import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.services.PlanMealService;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
     private final UserService userService;
     private final RecipeService recipeService;
+    private final PlanMealService planMealService;
+    private LocalDate localDate = LocalDate.now();
 
-    public DataLoader(UserService userService, RecipeService recipeService) {
+
+    public DataLoader(UserService userService, RecipeService recipeService, PlanMealService planMealService) {
         this.userService = userService;
         this.recipeService = recipeService;
+        this.planMealService = planMealService;
     }
 
     @Override
@@ -43,5 +49,15 @@ public class DataLoader implements CommandLineRunner {
         recipe1.setTime("1 hour");
         recipeService.create(recipe1);
 
+        Recipe recipe2 = new Recipe();
+        recipe2.setName("Recipe 2");
+        recipeService.save(recipe2);
+
+
+        PlanMeal planMeal1 = new PlanMeal();
+        planMeal1.setUserID(user1.getId());
+        planMeal1.setRecipeID(recipe1.getId());
+        planMeal1.setDate(localDate);
+        planMealService.save(planMeal1);
     }
 }
