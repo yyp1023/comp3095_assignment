@@ -23,19 +23,19 @@ public class DataLoader implements CommandLineRunner {
         User user1 = new User();
         user1.setFirstname("YP");
         user1.setLastname("Yoo");
-        userService.save(user1);
-
-        User user2 = new User();
-        user2.setFirstname("Mark");
-        user2.setLastname("Trespeces");
-        userService.save(user2);
-
-        Recipe recipe1 = new Recipe();
-        recipe1.setName("Recipe 1");
-        recipeService.save(recipe1);
-
-        Recipe recipe2 = new Recipe();
-        recipe2.setName("Recipe 2");
-        recipeService.save(recipe2);
+//        userService.save(user1);
+//
+//        User user2 = new User();
+//        user2.setFirstname("Mark");
+//        user2.setLastname("Trespeces");
+//        userService.save(user2);
+//
+//        Recipe recipe1 = new Recipe();
+//        recipe1.setName("Recipe 1");
+//        recipeService.save(recipe1);
+//
+//        Recipe recipe2 = new Recipe();
+//        recipe2.setName("Recipe 2");
+//        recipeService.save(recipe2);
     }
 }
