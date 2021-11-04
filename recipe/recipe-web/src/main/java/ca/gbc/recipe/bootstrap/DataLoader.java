@@ -25,6 +25,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+
 //        User user1 = new User();
 //        user1.setFirstname("YP");
 //        user1.setLastname("Yoo");

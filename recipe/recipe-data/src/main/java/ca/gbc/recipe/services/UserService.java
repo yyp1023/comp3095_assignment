@@ -5,4 +5,5 @@ import ca.gbc.recipe.model.User;
 
 public interface UserService {
 
+    User save (User user);
 }
