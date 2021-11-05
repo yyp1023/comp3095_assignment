@@ -10,6 +10,6 @@
 //public interface UserRepository extends JpaRepository<User, Long> {
 //
 //    @Query("from User where user_email=?1 and user_pass=?2")
-//    public User findByUsernamePassword(String username,String password);
+//    public User findById(String username,String password);
 //
 //}
