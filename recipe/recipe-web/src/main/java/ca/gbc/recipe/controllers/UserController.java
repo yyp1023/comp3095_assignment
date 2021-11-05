@@ -4,7 +4,9 @@ import ca.gbc.recipe.model.User;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,39 +38,40 @@ public class UserController {
 
 
 
-    @PostMapping({"", "/", "/index", "index.html"})
-    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
-                             HttpSession session, ModelMap modelMap)
-    {
+//    @PostMapping({"", "/", "/index", "index.html"})
+//    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
+//                             HttpSession session, ModelMap modelMap)
+//    {
 
-        User user = urepo.findByUsernamePassword(username, password);
+//        User user = urepo.findByUsernamePassword(username, password);
 
-        if(user != null)
-        {
-            String name = user.getUsername();
-            String pass = user.getPassword();
+//        if(user != null)
+//        {
+//            String name = user.getUsername();
+//            String pass = user.getPassword();
 
-            if(username.equalsIgnoreCase(name) && password.equalsIgnoreCase(pass))
-            {
-                // add session and direct to welcome or index
-                session.setAttribute("username",username);
-                return "welcome";
-            }
-            else
-            {
-                // error login reload index page
-                modelMap.put("error", "Invalid Account");
-                return "index";
-            }
-        }
-        else
-        {
-            // error login reload index page
-            modelMap.put("error", "Invalid Account");
-            return "index";
-        }
+//            if(username.equalsIgnoreCase(name) && password.equalsIgnoreCase(pass))
+//            {
+//                // add session and direct to welcome or index
+//                session.setAttribute("username",username);
+//                return "welcome";
+//            }
+//            else
+//            {
+//                // error login reload index page
+//                modelMap.put("error", "Invalid Account");
+//                return "index";
+//            }
+//        }
+//        else
+//        {
+//            // error login reload index page
+//            modelMap.put("error", "Invalid Account");
+//            return "index";
+//        }
+//
+//    }
 
-    }
 
     @RequestMapping("/register")
     public String userCreate(Model model){
