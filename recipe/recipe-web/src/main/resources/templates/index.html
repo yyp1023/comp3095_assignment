@@ -5,6 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="'Index Page'">Index Page</h1>
+<div class="container">
+
+    <div class="container-fluid text-center">
+        <div>
+<!--            th:src=""-->
+            <img class="img-fluid"  />
+        </div>
+<!--        th:action="@{/login}"-->
+        <form method="post" style="max-width: 350px; margin: 0 auto;">
+            <div class="border border-secondary p-3 rounded">
+                <h1>Login</h1>
+                <p>
+                    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
+                </p>
+                <p>
+                    <input type="password" name="password"  class="form-control" placeholder="Password" required />
+                </p>
+                <p>
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </p>
+<!--                  th:href=""-->
+                <div>New user? <a th:href="@{users/register}">Register</a></div>
+            </div>
+        </form>
+    </div>
+
+</div>
 </body>
 </html>

@@ -1,33 +1,33 @@
 package ca.gbc.recipe.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PlanMeal extends BaseEntity {
-    private Recipe recipe;
-    private User user;
-    private Date date;
+    private LocalDate date;
+    private Long userID;
+    private Long recipeID;
 
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public Long getRecipeID() {
+        return recipeID;
+    }
+
+    public void setRecipeID(Long recipeID) {
+        this.recipeID = recipeID;
     }
 }
