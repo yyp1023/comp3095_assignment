@@ -1,16 +1,20 @@
 package ca.gbc.recipe.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Set;
 
 public class Recipe extends BaseEntity {
     private String name;
 //    private User user;
-    private Set<String> equipments;
-    private Set<String> ingredients;
+    private String equipments;
+    private String ingredients;
     private String description;
     private String instruction;
     private String time;
+    private LocalDate date;
+    private String type;
+    private boolean status;
 
     public String getName() {
         return name;
@@ -28,19 +32,19 @@ public class Recipe extends BaseEntity {
 //        this.user = user;
 //    }
 
-    public Set<String> getEquipments() {
+    public String getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(Set<String> equipments) {
+    public void setEquipments(String equipments) {
         this.equipments = equipments;
     }
 
-    public Set<String> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<String> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -66,5 +70,29 @@ public class Recipe extends BaseEntity {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
