@@ -2,31 +2,60 @@ package ca.gbc.recipe.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "recipe")
+@Table(name = "recipes")
 public class Recipe extends BaseEntity {
-    @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
-    private Long id;
 
+    @Column(name = "name")
     private String name;
-//    private User user;
+
+    @Column(name = "equipments")
     private String equipments;
+
+    @Column(name = "ingredients")
     private String ingredients;
 
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "instruction")
     private String instruction;
+
+    @Column(name = "time")
     private String time;
 
-    public Long getId() {
-        return id;
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "dateCreated")
+    private LocalDate dateCreated;
+
+    @Column(name = "status")
+    private boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user_recipe;
+
+    @OneToMany(mappedBy = "recipe_fav")
+    private Set<Favorites> favorites;
+
+    @OneToMany(mappedBy = "user_selected_recipe")
+    private Set<PlanMeal> planMeals;
+
+    @ManyToOne
+    @JoinColumn(name = "user_recipe")
+    private User user;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -36,14 +65,6 @@ public class Recipe extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public String getEquipments() {
         return equipments;
@@ -83,5 +104,53 @@ public class Recipe extends BaseEntity {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public User getUser_recipe() {
+        return user_recipe;
+    }
+
+    public void setUser_recipe(User user_recipe) {
+        this.user_recipe = user_recipe;
+    }
+
+    public Set<Favorites> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<Favorites> favorites) {
+        this.favorites = favorites;
+    }
+
+    public Set<PlanMeal> getPlanMeals() {
+        return planMeals;
+    }
+
+    public void setPlanMeals(Set<PlanMeal> planMeals) {
+        this.planMeals = planMeals;
     }
 }
