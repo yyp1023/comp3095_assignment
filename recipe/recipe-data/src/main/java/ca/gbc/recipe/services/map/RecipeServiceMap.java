@@ -7,40 +7,24 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class RecipeServiceMap implements RecipeService {
-
-    public Map<Long, Recipe> map = new HashMap<>();
+public class RecipeServiceMap extends AbstractServiceMap<Recipe, Long> implements RecipeService {
+    @Override
+    public Recipe save(Recipe object) {
+        return super.save(object);
+    }
 
     @Override
     public Set<Recipe> findAll() {
-        return new HashSet(map.values());
+        return super.findAll();
+    }
+
+    @Override
+    public Recipe findById(Long id) {
+        return null;
     }
 
     @Override
     public Recipe findByName(String name) {
-        return map.get(name);
-    }
-
-    @Override
-    public Recipe create(Recipe recipe) {
-        if (recipe != null) {
-            if (recipe.getId() == null) {
-                recipe.setId(getNextId());
-            }
-            map.put(recipe.getId(), recipe);
-        } else {
-            throw new RuntimeException("Recipe cannot be null");
-        }
-        return recipe;
-    }
-
-    private Long getNextId() {
-        Long nextId = null;
-        try {
-            nextId = Collections.max(map.keySet()) + 1;
-        } catch (NoSuchElementException e) {
-            nextId = 1L;
-        }
-        return nextId;
+        return null;
     }
 }
