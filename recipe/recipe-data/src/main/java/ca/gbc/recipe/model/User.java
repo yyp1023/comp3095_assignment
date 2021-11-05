@@ -1,13 +1,30 @@
 package ca.gbc.recipe.model;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "user")
 public class User extends BaseEntity {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String firstname;
     private String lastname;
     private String username;
     private String password;
-    private Set<Recipe> favorites;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Recipe recipe;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -39,13 +56,5 @@ public class User extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Set<Recipe> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(Set<Recipe> favorites) {
-        this.favorites = favorites;
     }
 }
