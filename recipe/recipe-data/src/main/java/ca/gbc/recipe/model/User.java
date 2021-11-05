@@ -7,12 +7,19 @@ import javax.persistence.*;
 public class User extends BaseEntity {
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "firstname", nullable = false, length = 20)
     private String firstname;
+
+    @Column(name = "lastname", nullable = false, length = 20)
     private String lastname;
+
+    @Column(nullable = false, unique = true, length = 45)
     private String username;
+
+    @Column(nullable = false, length = 64)
     private String password;
 
     public Long getId() {

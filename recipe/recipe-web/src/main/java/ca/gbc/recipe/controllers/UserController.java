@@ -1,19 +1,28 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.repository.UserRepository;
 import ca.gbc.recipe.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/users")
 @Controller
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+    UserRepository urepo;
 
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -90,4 +99,26 @@ public class UserController {
         return "users/success";
     }
 
+    @PostMapping("/index")
+    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
+                             HttpSession session, ModelMap modelMap) {
+
+        User auser = urepo.findByUsernamePassword(username, password);
+
+        if (auser != null) {
+            String uname = auser.getUsername();
+            String upass = auser.getPassword();
+
+            if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
+                session.setAttribute("username", username);
+                return "/users/index";
+            } else {
+                modelMap.put("error", "Invalid Account");
+                return "/index";
+            }
+        } else {
+            modelMap.put("error", "Invalid Account");
+            return "index";
+        }
+    }
 }
