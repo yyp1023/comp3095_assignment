@@ -1,22 +1,19 @@
 package ca.gbc.recipe.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User extends BaseEntity {
     @Id
+    @Column(name = "id", nullable = false)
     @GeneratedValue
     private Long id;
+
     private String firstname;
     private String lastname;
     private String username;
     private String password;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Recipe recipe;
 
     public Long getId() {
         return id;

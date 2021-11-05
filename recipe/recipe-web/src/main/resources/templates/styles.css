@@ -1,0 +1,41 @@
+.margin-top-center{
+    margin: 5em auto;
+}
+.width30{
+    width: 30%;
+}
+.width60{
+    width: 60%;
+}
+.max-width{
+    width: 90%;
+}
+.padding-top3{
+    padding-top: 3rem;
+}
+.padding-top1{
+    padding-top: 1rem;
+}
+hr.dots{
+    background-color:transparent;
+    width: 10%;
+    margin: 10px auto;
+    border-top: 5px dotted gray;
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #c2c1c1;
+  border-left: 4px #000000 solid;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+  border-left: 4px #c5c5c5 solid;
+}
+
+.row-striped {
+    padding: 15px 0;
+}
+.bgGray{
+    background-color: #474343;
+}
