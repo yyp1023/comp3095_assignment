@@ -1,16 +1,33 @@
 package ca.gbc.recipe.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+@Entity
+@Table(name = "recipe")
 public class Recipe extends BaseEntity {
+    @Id
+    @GeneratedValue
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private String name;
 //    private User user;
-    private Set<String> equipments;
-    private Set<String> ingredients;
+    private String equipments;
+    private String ingredients;
+
     private String description;
     private String instruction;
     private String time;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -28,19 +45,19 @@ public class Recipe extends BaseEntity {
 //        this.user = user;
 //    }
 
-    public Set<String> getEquipments() {
+    public String getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(Set<String> equipments) {
+    public void setEquipments(String equipments) {
         this.equipments = equipments;
     }
 
-    public Set<String> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<String> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
