@@ -15,7 +15,7 @@
          <form method="post" th:action="@{login}" >
             <div class="border border-secondary p-3 rounded">
                 <h1>Login</h1>
-
+                <h6 th:text="${error}" style="color: red"> </h6>
                 <p class="padding-top3">
                     <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
                 </p>
