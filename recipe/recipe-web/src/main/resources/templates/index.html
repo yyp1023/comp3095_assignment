@@ -12,7 +12,8 @@
 
 <!--        th:action="@{/login}"-->
 <!--        <form  class="margin-top-center width30" method="post">-->
-            <form method="post" action="${pageContext.request.contextPath }/index">
+        ${error}
+         <form th:object="${}" method="post">
             <div class="border border-secondary p-3 rounded">
                 <h1>Login</h1>
                 <p>

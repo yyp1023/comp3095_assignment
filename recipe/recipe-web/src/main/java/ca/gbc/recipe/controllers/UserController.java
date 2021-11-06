@@ -2,13 +2,10 @@ package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
 import ca.gbc.recipe.repository.UserRepository;
-import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,11 +19,11 @@ public class UserController {
     @Autowired
     UserRepository urepo;
 
-    private final UserService userService;
+//    private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+//    public UserController(UserService userService) {
+//        this.userService = userService;
+//    }
 
 //    @RequestMapping({"", "/", "/index", "index.html"})
 //    public String listUser(Model model) {
@@ -83,42 +80,28 @@ public class UserController {
         return "users/register";
     }
 
-    @RequestMapping(value = "/registered")
-    public String success(@ModelAttribute("user") User user){
-        userService.save(user);
-        /*
-        * database codes here
-        *
-        * */
-
-        //prints data just to check if this function is working
-        System.out.println(user.getFirstname());
-        System.out.println(user.getLastname());
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
-        return "users/success";
+    @RequestMapping("/index")
+    public String home()
+    {
+        return "users/index";
     }
 
-    @PostMapping("/index")
-    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
-                             HttpSession session, ModelMap modelMap) {
 
-        User auser = urepo.findByUsernamePassword(username, password);
+//    @RequestMapping(value = "/registered")
+//    public String success(@ModelAttribute("user") User user){
+//        userService.save(user);
+//        /*
+//        * database codes here
+//        *
+//        * */
+//
+//        //prints data just to check if this function is working
+//        System.out.println(user.getFirstname());
+//        System.out.println(user.getLastname());
+//        System.out.println(user.getUsername());
+//        System.out.println(user.getPassword());
+//        return "users/success";
+//    }
 
-        if (auser != null) {
-            String uname = auser.getUsername();
-            String upass = auser.getPassword();
 
-            if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
-                session.setAttribute("username", username);
-                return "/users/index";
-            } else {
-                modelMap.put("error", "Invalid Account");
-                return "/index";
-            }
-        } else {
-            modelMap.put("error", "Invalid Account");
-            return "index";
-        }
-    }
 }

@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User extends BaseEntity {
 
-    @Column(name ="first_name")
+    @Column(name ="firstname")
     private String firstname;
 
     @Column(name = "lastname")
