@@ -15,14 +15,14 @@
          <form method="post" th:action="@{login}" >
             <div class="border border-secondary p-3 rounded">
                 <h1>Login</h1>
-                <h6 style="color: red"> </h6>
-                <p>
+
+                <p class="padding-top3">
                     <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
                 </p>
                 <p>
                     <input type="password" name="password"  class="form-control" placeholder="Password" required />
                 </p>
-                <p>
+                <p class="padding-top3">
                     <button class="btn btn-primary" type="submit">Login</button>
                 </p>
                 <div>New user? <a th:href="@{users/register}">Register</a></div>
