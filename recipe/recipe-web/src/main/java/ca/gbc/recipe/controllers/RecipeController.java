@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RecipeController {
 
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
+    @RequestMapping({"/view_recipe"})
     public String listRecipe(Model model) {
         //model.addAttribute("recipes", recipeService.findAll());
         return "recipes/index";

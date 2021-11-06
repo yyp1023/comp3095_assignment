@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     UserServiceMap userService;
 
-    @RequestMapping({"", "/", "/index", "index.html"})
+    @RequestMapping({"/", "", "/profile"})
     public String listUser(Model model) {
         model.addAttribute("users", userService.listAll());
         return "users/index";
@@ -86,6 +86,11 @@ public class UserController {
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         return "users/success";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        return "users/logout";
     }
 
 }
