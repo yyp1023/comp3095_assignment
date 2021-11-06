@@ -20,7 +20,7 @@ public class RecipeController {
     @Autowired
     RecipeService recipeService;
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
+    @RequestMapping({"/view_recipe"})
     public String listRecipe(Model model) {
         //model.addAttribute("recipes", recipeService.findAll());
         return "recipes/index";
