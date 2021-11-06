@@ -1,29 +1,21 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
-import ca.gbc.recipe.repository.UserRepository;
+import ca.gbc.recipe.services.UserServiceMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @RequestMapping("/users")
 @Controller
 public class UserController {
 
     @Autowired
-    UserRepository urepo;
-
-//    private final UserService userService;
-
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
+    UserServiceMap userService;
 
 //    @RequestMapping({"", "/", "/index", "index.html"})
 //    public String listUser(Model model) {
@@ -76,32 +68,24 @@ public class UserController {
     @RequestMapping("/register")
     public String userCreate(Model model){
         User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute(user);
         return "users/register";
     }
 
-    @RequestMapping("/index")
-    public String home()
-    {
-        return "users/index";
+    @RequestMapping(value = "/registered", method= RequestMethod.POST)
+    public String success(@ModelAttribute("user") User user){
+        userService.save(user);
+        /*
+        * database codes here
+        *
+        * */
+
+        //prints data just to check if this function is working
+        System.out.println(user.getFirstname());
+        System.out.println(user.getLastname());
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+        return "users/success";
     }
-
-
-//    @RequestMapping(value = "/registered")
-//    public String success(@ModelAttribute("user") User user){
-//        userService.save(user);
-//        /*
-//        * database codes here
-//        *
-//        * */
-//
-//        //prints data just to check if this function is working
-//        System.out.println(user.getFirstname());
-//        System.out.println(user.getLastname());
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getPassword());
-//        return "users/success";
-//    }
-
 
 }
