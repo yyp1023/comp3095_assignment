@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/users/plan_meals")
+@RequestMapping("/plan_meals")
 @Controller
 public class PlanMealController {
 
@@ -24,8 +24,6 @@ public class PlanMealController {
 
 
 
-
-
-        return "users/plan_meals/index";
+        return "plan_meals/index";
     }
 }
