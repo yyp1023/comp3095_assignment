@@ -1,7 +1,7 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
-import ca.gbc.recipe.services.UserServiceMap;
+import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     @Autowired
-    UserServiceMap userService;
+    UserService userService;
 
     @RequestMapping({"", "/", "/index", "index.html"})
     public String listUser(Model model) {

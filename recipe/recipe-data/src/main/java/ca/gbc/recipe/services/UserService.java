@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class UserServiceMap{
+public class UserService{
 
     @Autowired
     private UserRepository repo;
 
     public void save(User object) {
-         repo.save(object);
+        repo.save(object);
     }
 
     public User getById(Integer id) { return repo.getById(id); }

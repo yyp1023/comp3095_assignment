@@ -20,7 +20,6 @@ public class RecipeController {
     @Autowired
     RecipeService recipeService;
 
-
     @RequestMapping({"", "/", "/index", "/index.html"})
     public String listRecipe(Model model) {
         //model.addAttribute("recipes", recipeService.findAll());
@@ -39,10 +38,6 @@ public class RecipeController {
     @RequestMapping(value = "/recipe_created", method= RequestMethod.POST)
     public String success(@ModelAttribute("recipe") Recipe recipe){
         recipeService.save(recipe);
-        /*
-         * database codes here
-         *
-         * */
         return "recipes/recipe_created";
     }
 }
