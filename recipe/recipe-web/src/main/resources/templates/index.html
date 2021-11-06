@@ -10,10 +10,10 @@
 <div class="container">
     <div class="container-fluid text-center">
 
-<!--        th:action="@{/login}"-->
-        <form class="margin-top-center width30" method="post">
+         <form method="post" th:action="@{login}" >
             <div class="border border-secondary p-3 rounded">
                 <h1>Login</h1>
+                <h6 th:text="${error}" style="color: red"> </h6>
                 <p>
                     <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
                 </p>
@@ -21,9 +21,8 @@
                     <input type="password" name="password"  class="form-control" placeholder="Password" required />
                 </p>
                 <p>
-                    <input type="submit" value="Login" class="btn btn-primary" />
+                    <button class="btn btn-primary" type="submit">Login</button>
                 </p>
-<!--                  th:href=""-->
                 <div>New user? <a th:href="@{users/register}">Register</a></div>
             </div>
         </form>
