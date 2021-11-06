@@ -1,13 +1,32 @@
 package ca.gbc.recipe.model;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "users")
 public class User extends BaseEntity {
+
+    @Column(name = "firstname")
     private String firstname;
+
+    @Column(name = "lastname")
     private String lastname;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
-    private Set<Recipe> favorites;
+
+    @OneToMany(mappedBy = "user_recipe")
+    private Set<Recipe> recipes;
+
+    @OneToMany(mappedBy = "recipe_fav")
+    private Set<Favorites> selected_user;
+
+    @OneToMany(mappedBy = "user_meal")
+    private Set<PlanMeal> planMeals;
 
     public String getFirstname() {
         return firstname;
@@ -41,11 +60,27 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public Set<Recipe> getFavorites() {
-        return favorites;
+    public Set<Recipe> getRecipes() {
+        return recipes;
     }
 
-    public void setFavorites(Set<Recipe> favorites) {
-        this.favorites = favorites;
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    public Set<Favorites> getSelected_user() {
+        return selected_user;
+    }
+
+    public void setSelected_user(Set<Favorites> selected_user) {
+        this.selected_user = selected_user;
+    }
+
+    public Set<PlanMeal> getPlanMeals() {
+        return planMeals;
+    }
+
+    public void setPlanMeals(Set<PlanMeal> planMeals) {
+        this.planMeals = planMeals;
     }
 }

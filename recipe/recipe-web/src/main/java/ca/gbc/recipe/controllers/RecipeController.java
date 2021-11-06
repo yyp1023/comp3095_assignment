@@ -1,6 +1,6 @@
 package ca.gbc.recipe.controllers;
 
-import ca.gbc.recipe.services.RecipeService;
+import ca.gbc.recipe.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RecipeController {
 
-    private final RecipeService recipeService;
-
-
-    public RecipeController(RecipeService recipeService) {
-        this.recipeService = recipeService;
-    }
 
     @RequestMapping({"", "/", "/index", "/index.html"})
     public String listRecipe(Model model) {
         //model.addAttribute("recipes", recipeService.findAll());
         return "recipes/index";
+    }
+
+    @RequestMapping("/createRecipe")
+    public String userCreate(Model model){
+        User user = new User();
+        model.addAttribute(user);
+        return "recipes/createRecipe";
     }
 }
