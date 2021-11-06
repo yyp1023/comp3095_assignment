@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "recipes")
+@Table(name = "recipe")
 public class Recipe extends BaseEntity {
 
     @Column(name = "name")

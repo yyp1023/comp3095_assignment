@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "planmeal")
+@Table(name = "plan_meal")
 public class PlanMeal extends BaseEntity {
 
     @ManyToOne

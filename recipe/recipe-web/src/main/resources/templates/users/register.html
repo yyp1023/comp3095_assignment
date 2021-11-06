@@ -16,21 +16,21 @@
         </div>
         <div class="card-body">
 
-            <form  action="#" th:action="@{/users/registered}" th:object="${user}" method="GET" >
+            <form  action="#" th:action="@{/users/registered}" th:object="${user}" method="post" >
                 <div class="border-secondary p-3 rounded">
                     <p>
-                        <input type="text" th:field="*{firstname}" name="firstname" class="form-control" placeholder="First Name" required autofocus/>
+                        <input type="text" th:field="*{firstname}" class="form-control" placeholder="First Name" required autofocus/>
                     </p>
                     <p>
-                        <input type="text" th:field="*{lastname}" name="lastname" class="form-control" placeholder="Last Name" required />
+                        <input type="text" th:field="*{lastname}" class="form-control" placeholder="Last Name" required />
                     </p>
                     <p>
-                        <input type="text" th:field="*{username}" name="username" class="form-control" placeholder="Username" required />
+                        <input type="text" th:field="*{username}" class="form-control" placeholder="Username" required />
                     </p>
                     <p>
-                        <input type="text" th:field="*{password}" name="password" class="form-control" placeholder="Password" required />
+                        <input type="text" th:field="*{password}" class="form-control" placeholder="Password" required />
                     </p>
-                    <button class="btn btn-primary" name="submit" type="submit">Register</button>
+                    <button class="btn btn-primary" type="submit">Register</button>
 
                 </div>
             </form>
