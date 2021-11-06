@@ -1,15 +1,13 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.repository.UserRepository;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +17,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    UserRepository userRepository;
 
     @RequestMapping({"", "/", "/index", "index.html"})
     public String listUser(Model model) {
@@ -97,6 +96,12 @@ public class UserController {
         session.removeAttribute("username");
         session.invalidate();
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public @ResponseBody User test(User user) {
+        userRepository.save(user);
+        return user;
     }
 
 }

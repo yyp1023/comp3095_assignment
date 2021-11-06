@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
 
-            <form  action="#" th:action="@{/users/registered}" th:object="${user}" method="post" >
+            <form  action="/register" th:action="@{/users/registered}" th:object="${user}" method="post" >
                 <div class="border-secondary p-3 rounded">
                     <p>
                         <input type="text" th:field="*{firstname}" class="form-control" placeholder="First Name" required autofocus/>
