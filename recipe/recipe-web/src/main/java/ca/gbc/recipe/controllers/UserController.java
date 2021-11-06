@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/users")
 @Controller
@@ -17,17 +20,17 @@ public class UserController {
     @Autowired
     UserServiceMap userService;
 
-//    @RequestMapping({"", "/", "/index", "index.html"})
-//    public String listUser(Model model) {
-////        model.addAttribute("users", userService.findAll());
-//        return "users/index";
-//    }
-//
-//    @RequestMapping({"/profile"})
-//    public String showProfile(Model model) {
-////        model.addAttribute("users", userService.findById());
-//        return "users/index";
-//    }
+    @RequestMapping({"", "/", "/index", "index.html"})
+    public String listUser(Model model) {
+//        model.addAttribute("users", userService.findAll());
+        return "users/index";
+    }
+
+    @RequestMapping({"/profile"})
+    public String showProfile(Model model) {
+//        model.addAttribute("users", userService.findById());
+        return "users/index";
+    }
 
 
 
@@ -86,6 +89,14 @@ public class UserController {
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         return "users/success";
+    }
+
+    @GetMapping(value= "/logout")
+    public String logout(HttpSession session)
+    {
+        session.removeAttribute("username");
+        session.invalidate();
+        return "redirect:/";
     }
 
 }
