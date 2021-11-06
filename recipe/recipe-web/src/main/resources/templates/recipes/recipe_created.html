@@ -17,34 +17,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/users}">Home</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{../users}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Recipe
+                        Recipe
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{../recipes/createRecipe}">Create Recipe</a></li>
-                        <li><a class="dropdown-item" th:href="@{../recipes/}">View Recipe</a></li>
+                        <li><a class="dropdown-item" th:href="@{recipes/createRecipe}">Create Recipe</a></li>
+                        <li><a class="dropdown-item" th:href="@{/}">View Recipe</a></li>
                     </ul>
-                  </li>
-                  <li class="nav-item dropdown">
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Meal Planner
+                        Meal Planner
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" th:href="@{../plan_meals/createPlan}">Plan A Meal</a></li>
-                      <li><a class="dropdown-item" th:href="@{../plan_meals/index}">View Planned Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{../plan_meals/createPlan}">Plan A Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{../plan_meals/index}">View Planned Meal</a></li>
                     </ul>
-                  </li>
-                  <form class="d-flex">
+                </li>
+                <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search for a recipe" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
 
             <button class="btn btn-outline-danger" type="submit">Log Out</button>
-            
+
         </div>
     </div>
 </nav>
@@ -53,8 +53,7 @@
 <div class="container container-fluid">
     <div class="row">
         <div class="col-3 padding-top1">
-            <h1>Success!</h1>
-            <h4>Welcome <span th:text="${user.firstname} + ' ' + ${user.lastname}"> </span></h4>
+            <h1>Recipe Created</h1>
         </div>
     </div>
 </div>

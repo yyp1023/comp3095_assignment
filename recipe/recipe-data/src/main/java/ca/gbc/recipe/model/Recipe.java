@@ -3,6 +3,7 @@ package ca.gbc.recipe.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
@@ -49,14 +50,6 @@ public class Recipe extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_recipe")
     private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getName() {
         return name;
@@ -152,5 +145,13 @@ public class Recipe extends BaseEntity {
 
     public void setPlanMeals(Set<PlanMeal> planMeals) {
         this.planMeals = planMeals;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
