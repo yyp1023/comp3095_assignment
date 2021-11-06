@@ -1,31 +1,21 @@
 package ca.gbc.recipe.controllers;
 
-import ca.gbc.recipe.services.PlanMealService;
-import ca.gbc.recipe.services.RecipeService;
-import ca.gbc.recipe.services.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/users/plan_meals")
+@RequestMapping("/plan_meals")
 @Controller
 public class PlanMealController {
 
-    private final PlanMealService planMealService;
+    @RequestMapping({"/planned_meals"})
+    public String viewPlannedMeals(){
 
-    public PlanMealController(PlanMealService planMealService, RecipeService recipeService, UserService userService) {
-        this.planMealService = planMealService;
+        return "plan_meals/index";
     }
 
-    @RequestMapping({"", "/", "/index", "index.html"})
-    public String listUser(Model model) {
-        model.addAttribute("planMeals", planMealService.findAll());
-
-
-
-
-
-
-        return "users/plan_meals/index";
+    @RequestMapping({"/createPlan"})
+    public String createMeal(){
+        return  "plan_meals/createPlan";
     }
+
 }

@@ -1,7 +1,9 @@
 package ca.gbc.recipe.services;
 
-import ca.gbc.recipe.model.PlanMeal;
+import org.springframework.stereotype.Service;
 
-public interface PlanMealService extends CrudService<PlanMeal, Long> {
+import java.util.Set;
 
+@Service
+public class PlanMealService {
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(name ="first_name")
+    @Column(name = "firstname")
     private String firstname;
 
     @Column(name = "lastname")
