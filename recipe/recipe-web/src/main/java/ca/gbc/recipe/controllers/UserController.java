@@ -17,11 +17,11 @@ public class UserController {
     @Autowired
     UserServiceMap userService;
 
-//    @RequestMapping({"", "/", "/index", "index.html"})
-//    public String listUser(Model model) {
-////        model.addAttribute("users", userService.findAll());
-//        return "users/index";
-//    }
+    @RequestMapping({"", "/", "/index", "index.html"})
+    public String listUser(Model model) {
+        model.addAttribute("users", userService.listAll());
+        return "users/index";
+    }
 //
 //    @RequestMapping({"/profile"})
 //    public String showProfile(Model model) {
