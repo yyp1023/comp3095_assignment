@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class RecipeServiceMap {
+public class RecipeService {
 
 }

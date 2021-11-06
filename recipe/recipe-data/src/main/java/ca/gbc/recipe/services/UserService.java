@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class UserServiceMap{
+public class UserService {
 
     @Autowired
     private UserRepository repo;
