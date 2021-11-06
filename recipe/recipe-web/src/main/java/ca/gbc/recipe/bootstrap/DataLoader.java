@@ -29,7 +29,34 @@ public class DataLoader implements CommandLineRunner {
         user1.setUsername("kpeds25");
         user1.setPassword("Kent");
         userService.save(user1);
+
+        User user2 = new User();
+        user2.setFirstname("Mark");
+        user2.setLastname("Trespeces");
+        user2.setUsername("mtres");
+        user2.setPassword("tres");
+        userService.save(user2);
+
+        User user3 = new User();
+        user3.setFirstname("John");
+        user3.setLastname("Lopez");
+        user3.setUsername("jlopez");
+        user3.setPassword("jj");
+        userService.save(user3);
+
+        User user4 = new User();
+        user4.setFirstname("Young Pyung");
+        user4.setLastname("Yoo");
+        user4.setUsername("ypyoo");
+        user4.setPassword("yoo");
+        userService.save(user4);
+
+
         System.out.println("Dataloaded");
+
+
+
+
     }
 
 }
