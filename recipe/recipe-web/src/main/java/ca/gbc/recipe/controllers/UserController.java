@@ -25,9 +25,6 @@ public class UserController {
 //        model.addAttribute("users", userService.findAll());
         return "users/index";
     }
-
-
-
 //    @PostMapping({"", "/", "/index", "index.html"})
 //    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
 //                             HttpSession session, ModelMap modelMap)
@@ -61,14 +58,12 @@ public class UserController {
 //        }
 //
 //    }
-
     @RequestMapping("/register")
     public String userCreate(Model model){
         User user = new User();
         model.addAttribute(user);
         return "users/register";
     }
-
     @RequestMapping(value = "/registered", method= RequestMethod.POST)
     public String success(@ModelAttribute("user") User user){
         userService.save(user);
@@ -76,7 +71,6 @@ public class UserController {
         * database codes here
         *
         * */
-
         //prints data just to check if this function is working
         System.out.println(user.getFirstname());
         System.out.println(user.getLastname());
@@ -84,7 +78,6 @@ public class UserController {
         System.out.println(user.getPassword());
         return "users/success";
     }
-
     @GetMapping(value= "/logout")
     public String logout(HttpSession session)
     {
@@ -92,5 +85,4 @@ public class UserController {
         session.invalidate();
         return "redirect:/";
     }
-
 }
