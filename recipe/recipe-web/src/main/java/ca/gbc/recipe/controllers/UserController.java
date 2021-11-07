@@ -98,10 +98,5 @@ public class UserController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public @ResponseBody User test(User user) {
-        userRepository.save(user);
-        return user;
-    }
 
 }
