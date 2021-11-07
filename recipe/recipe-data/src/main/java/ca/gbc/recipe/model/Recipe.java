@@ -31,24 +31,6 @@ public class Recipe extends BaseEntity {
     @Column(name = "type")
     private String type;
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "name='" + name + '\'' +
-                ", equipments='" + equipments + '\'' +
-                ", ingredients='" + ingredients + '\'' +
-                ", description='" + description + '\'' +
-                ", instruction='" + instruction + '\'' +
-                ", time='" + time + '\'' +
-                ", type='" + type + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", status=" + status +
-                ", user_recipe=" + user_recipe +
-                ", favorites=" + favorites +
-                ", planMeals=" + planMeals +
-                '}';
-    }
-
     @Column(name = "dateCreated")
     private LocalDate dateCreated;
 

@@ -1,31 +1,31 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.PlanMeal;
-import ca.gbc.recipe.model.Recipe;
-import ca.gbc.recipe.services.PlanMealService;
-import ca.gbc.recipe.services.RecipeService;
+import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.repository.PlanMealRepository;
+import ca.gbc.recipe.repository.RecipeRepository;
+import ca.gbc.recipe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
-@RequestMapping("/user")
+@RequestMapping("/user/{userId}/plan_meal")
 @Controller
 public class PlanMealController {
 
     @Autowired
-    RecipeService recipeService;
+    RecipeRepository recipeService;
 
     @Autowired
-    PlanMealService planMealService;
+    PlanMealRepository planMealService;
+
+    @Autowired
+    UserRepository userService;
 
     @RequestMapping({"/planned_meals"})
     public String viewPlannedMeals(){
@@ -34,17 +34,20 @@ public class PlanMealController {
     }
 
     @PostMapping(value= "/createPlan")
-    public String createMeal(HttpSession session, Model model , @ModelAttribute("planMeal") PlanMeal planMeal){
+    public String planMealCreated(@ModelAttribute("planMeal") PlanMeal planMeal){
         planMealService.save(planMeal);
-        model.addAttribute("localDate", LocalDate.now());
-        model.addAttribute("time", LocalTime.now());
-        return  "plan_meals/createPlan";
+        return  "plan_meals/index";
     }
 
     @RequestMapping({ "/createPlan"})
-    public String createMeal(Model model){
+    public String createMeal(@PathVariable("userId") Long userId, Model model, @RequestParam(name = "setUser_selected_recipe") Long setUser_selected_recipe){
+        PlanMeal planmeal = new PlanMeal();
+        planmeal.setUser_meal(userService.findUserById(userId));
+        planmeal.setUser_selected_recipe(recipeService.findRecipeById(setUser_selected_recipe));
+        model.addAttribute(planmeal);
+        model.addAttribute("localDate", LocalDate.now());
         model.addAttribute("recipes", recipeService.findAll());
-       return "plan_meals/createPlan";
+        return "/plan_meals/createPlan";
     }
 
 }

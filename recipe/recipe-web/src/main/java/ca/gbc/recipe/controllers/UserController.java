@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 
-@RequestMapping("/users")
+@RequestMapping("/user/{userId}")
 @Controller
 public class UserController {
 
@@ -47,7 +47,7 @@ public class UserController {
     @GetMapping(value= "/logout")
     public String logout(HttpSession session)
     {
-        session.removeAttribute("username");
+        session.removeAttribute("user");
         session.invalidate();
         return "redirect:/";
     }
