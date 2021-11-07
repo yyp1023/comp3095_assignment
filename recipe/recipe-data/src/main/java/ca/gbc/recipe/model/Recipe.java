@@ -1,9 +1,7 @@
 package ca.gbc.recipe.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
@@ -117,6 +115,10 @@ public class Recipe extends BaseEntity {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public boolean getStatus() {
+        return status;
     }
 
     public User getUser_id() {

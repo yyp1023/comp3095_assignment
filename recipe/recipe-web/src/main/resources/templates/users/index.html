@@ -41,9 +41,17 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
-            <form th:action="@{/users/logout}">
-                <input  class="btn btn-outline-danger" type="submit" value="Log Out">
-            </form>
+            <div class="dropdown pushLeft">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                   User Name
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -52,52 +60,7 @@
         <div class="row">
             <div class="col-3 padding-top1">
                 <h1>Ready to cook?</h1>
-
                 <h4>Welcome <span> Name</span></h4>
-            </div>
-            <div class="col-9 padding-top3">
-                <h3>Your Recipes</h3>
-                <div class="padding-top1">
-                    <div class="card">
-                        <h5 class="card-header">Spaghetti</h5>
-                        <div class="card-body">
-                            <p>Cook time: 1.5 hour ****Profile View, the owner can see just his Recipe</p>
-                          <h5 class="card-title">Description: </h5>
-                          <p class="card-text">This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
-                          <h5 class="card-title">Equipments: </h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <h5 class="card-title">Ingredients: </h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <h5 class="card-title">Instruction: </h5>
-                          <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease.</p>
-                          <hr class="dots">
-                          <p class="card-text">Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally.</p>
-                          <hr class="dots">
-                          <p class="card-text">Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally.</p>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="padding-top1">
-                    <div class="card">
-                        <h5 class="card-header">Spaghetti</h5>
-                        <div class="card-body">
-                            <p>Cook time: 1.5 hour</p>
-                          <h5 class="card-title">Description: </h5>
-                          <p class="card-text">This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
-                          <h5 class="card-title">Equipments: </h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <h5 class="card-title">Ingredients: </h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <h5 class="card-title">Instruction: </h5>
-                          <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                          
-                        </div>
-                      </div>
-                </div>
-
-                
-                
             </div>
         </div>
     </div>

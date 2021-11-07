@@ -43,8 +43,9 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipe_created", method= RequestMethod.POST)
     public String success(@ModelAttribute("recipe") Recipe recipe,
-                          HttpSession session, ModelMap modelMap){
-
+                          HttpSession session, ModelMap modelMap,
+                          Model model){
+        model.addAttribute("recipe", recipe);
         session.getAttribute("username");
         recipe.setDateCreated(LocalDate.now());
         recipeService.save(recipe);

@@ -20,44 +20,15 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping({"", "/", "/index", "index.html", "/profile"})
-    public String showProfile(Model model) {
-//        model.addAttribute("users", userService.findAll());
+    @RequestMapping({"", "/", "/index", "index.html"})
+    public String home(){
         return "users/index";
     }
-//    @PostMapping({"", "/", "/index", "index.html"})
-//    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
-//                             HttpSession session, ModelMap modelMap)
-//    {
-//
-//        User user = urepo.findByUsernamePassword(username, password);
-//
-//        if(user != null)
-//        {
-//            String name = user.getUsername();
-//            String pass = user.getPassword();
-//
-//            if(username.equalsIgnoreCase(name) && password.equalsIgnoreCase(pass))
-//            {
-//                // add session and direct to welcome or index
-//                session.setAttribute("username",username);
-//                return "welcome";
-//            }
-//            else
-//            {
-//                // error login reload index page
-//                modelMap.put("error", "Invalid Account");
-//                return "index";
-//            }
-//        }
-//        else
-//        {
-//            // error login reload index page
-//            modelMap.put("error", "Invalid Account");
-//            return "index";
-//        }
-//
-//    }
+
+    public String showProfile(Model model) {
+        return " ";
+    }
+
     @RequestMapping("/register")
     public String userCreate(Model model){
         User user = new User();
@@ -84,5 +55,20 @@ public class UserController {
         session.removeAttribute("username");
         session.invalidate();
         return "redirect:/";
+    }
+
+    @RequestMapping("/accountInfo")
+    public String accountInfo(){
+        return "users/accountInfo";
+    }
+
+    @RequestMapping("/myRecipe")
+    public String myRecipe(){
+        return "users/myRecipe";
+    }
+
+    @RequestMapping("/myFavourite")
+    public String myFavourite(){
+        return "users/myFavourite";
     }
 }
