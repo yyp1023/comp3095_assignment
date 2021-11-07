@@ -32,8 +32,8 @@
                         Meal Planner
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/plan_meals/createPlan}">Plan A Meal</a></li>
-                        <li><a class="dropdown-item" th:href="@{/plan_meals/planned_meals}">View Planned Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -53,38 +53,50 @@
         <form class="row g-3" action="#" th:action="@{/recipes/recipe_created}" th:object="${recipe}" method="post" >
           <div class="col-md-5">
             <label class="form-label">Recipe Name</label>
-            <input  type="text" th:field="*{name}" class="form-control">
+            <input  type="text" th:field="*{name}" class="form-control" required autofocus>
           </div>
           <div class="col-md-2">
             <label  class="form-label">Cook Time</label>
-            <input type="text" th:field="*{time}" th:text="${time}" class="form-control">
+            <input type="text" th:field="*{time}" class="form-control" required>
           </div>
+            <div class="col-md-2">
+                <label  class="form-label">Type</label>
+                <select class="form-select" required>
+                    <option selected>Breakfast</option>
+                    <option value="1">Lunch</option>
+                    <option value="2">Dinner</option>
+                    <option value="3">Snack</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label  class="form-label">Status</label>
+                <select class="form-select" required>
+                    <option value="TRUE">Private</option>
+                    <option value="FALSE">Public</option>
+                </select>
+            </div>
           <div class="col-12">
             <label class="form-label">Description</label>
-            <input type="text" th:field="*{description}" class="form-control">
+              <textarea th:field="*{description}" class="form-control" rows="2" required></textarea>
           </div><div class="col-12">
             <label class="form-label">Equipments</label>
-            <input type="text" th:field="*{equipments}" class="form-control">
+            <textarea th:field="*{equipments}" class="form-control" rows="2" required></textarea>
           </div>
           <div class="col-12">
             <label class="form-label">Ingredients</label>
-            <input type="text" th:field="*{ingredients}" class="form-control">
+              <textarea th:field="*{ingredients}" class="form-control" rows="3" required></textarea>
           </div>
           <div class="col-12 form-group">
             <label class="form-label">Instructions</label>
-              <textarea th:field="*{instruction}" class="form-control" rows="3"></textarea>
+              <textarea th:field="*{instruction}" class="form-control" rows="3" required></textarea>
           </div>
-            <div class="col-12 form-group">
-                <label class="form-label">Type:</label>
-                <input type="text" th:field="*{type}" class="form-control" >
-            </div>
-            <div class="col-12 form-group">
+            <div class="col-2 form-group">
                 <label class="form-label">Date Created</label>
-                <label th:field="*{dateCreated}" class="form-control" rows="3" th:text="${localDate}"></label>
+                <label th:field="*{dateCreated}" class="form-control" th:text="${localDate}"></label>
             </div>
 
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">Create Recipe</button>
+            <button type="submit" class="btn btn-primary" >Create Recipe</button>
           </div>
         </form>
       </div>

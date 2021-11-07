@@ -26,7 +26,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/recipes/createRecipe}">Create Recipe</a></li>
-                        <li><a class="dropdown-item" th:href="@{/recipes/view_recipes}">View Recipe</a></li>
+                        <li><a class="dropdown-item" th:href="@{/recipes/view_recipe}">View Recipe</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -34,8 +34,8 @@
                         Meal Planner
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/plan_meals/createPlan}">Plan A Meal</a></li>
-                        <li><a class="dropdown-item" th:href="@{/plan_meals/planned_meals}">View Planned Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -43,7 +43,7 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
-            <form th:action="@{users/logout}">
+            <form th:action="@{/users/logout}">
                 <input  class="btn btn-outline-danger" type="submit" value="Log Out">
             </form>
         </div>

@@ -32,8 +32,8 @@
                         Meal Planner
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/user/createPlan}">Plan A Meal</a></li>
-                        <li><a class="dropdown-item" th:href="@{/user/planned_meals}">View Planned Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -50,17 +50,18 @@
 
     <div class="container container-fluid">
       <h2 class="padding-top1">Plan A meal</h2>
-      <div class="padding-top1">
-        <h5>Select recipe</h5>
-        <select th:each="recipe: ${recipes}" class="form-select width30">
-            <option th:text="${recipe.name}"></option>
-        </select>
-      </div>
     <div class="padding-top1">
+        <h5>Select recipe</h5>
+        <select class="form-select width30" required>
+            <option>Recipe</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
         <h5>Select Date</h5>
-        <form class="idk">
-          <input type="datetime-local" name="birthdaytime">
-          <input class="btn btn-primary" type="submit" value="Done">
+        <form th:action="@{/users/plan_meal/planned_meals}">
+          <input type="datetime-local" required> <br>
+            <button class="btn btn-primary margin-top1">Done</button>
         </form>
     </div>
     </div>
