@@ -50,26 +50,20 @@
 
     <div class="container container-fluid">
       <h2 class="padding-top1">Plan A meal</h2>
-      <div class="padding-top1">
-        <h5>Select recipe</h5>
-        <select class="form-select width30">
-          <option selected>Recipe</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
     <div class="padding-top1">
+        <h5>Select recipe</h5>
+        <select class="form-select width30" required>
+            <option>Recipe</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
         <h5>Select Date</h5>
-        <form>
-          <input type="datetime-local" >
+        <form th:action="@{/users/plan_meal/planned_meals}">
+          <input type="datetime-local" required> <br>
+            <button class="btn btn-primary margin-top1">Done</button>
         </form>
     </div>
-        <div class="padding-top1">
-            <form th:action="@{/plan_meals/planned_meals}">
-                <input  class="btn btn-primary" type="submit" value="Done">
-            </form>
-        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
