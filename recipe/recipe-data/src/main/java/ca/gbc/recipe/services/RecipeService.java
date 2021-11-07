@@ -26,6 +26,6 @@ public class RecipeService {
         if (keyword != null) {
             return repo.search(keyword);
         }
-        return repo.findAll();
+        return repo.isPublic();
     }
 }
