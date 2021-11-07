@@ -19,7 +19,7 @@ public class User extends BaseEntity {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user_recipe")
+    @OneToMany(mappedBy = "user_id")
     private Set<Recipe> recipes;
 
     @OneToMany(mappedBy = "recipe_fav")

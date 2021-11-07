@@ -64,11 +64,25 @@ public class DataLoader implements CommandLineRunner {
         recipe1.setName("Masarap ako");
         recipe1.setStatus(true);
         recipe1.setType("Lunch");
-        recipe1.setTime("LocalTime.now()");
+        recipe1.setTime("1.5 hours");
         recipe1.setIngredients("ako ikaw mama mo");
+        recipe1.setUser_id(user2);
         recipeService.save(recipe1);
 
-        System.out.println("Dataloaded");
+
+        Recipe recipe2 = new Recipe();
+        recipe2.setDateCreated(LocalDate.now());
+        recipe2.setEquipments("HAHA");
+        recipe2.setDescription("HAHA");
+        recipe2.setInstruction("HAHA");
+        recipe2.setName("HAHA");
+        recipe2.setStatus(true);
+        recipe2.setType("HAHA");
+        recipe2.setTime("HAHA");
+        recipe2.setIngredients("HAHA");
+        recipe2.setUser_id(user1);
+        recipeService.save(recipe2);
+        System.out.println("HAHA");
 
 
     }

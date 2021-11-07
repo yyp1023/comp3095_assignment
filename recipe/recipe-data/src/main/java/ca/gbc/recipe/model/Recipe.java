@@ -57,7 +57,7 @@ public class Recipe extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user_recipe;
+    private User user_id;
 
     @OneToMany(mappedBy = "recipe_fav")
     private Set<Favorites> favorites;
@@ -137,12 +137,12 @@ public class Recipe extends BaseEntity {
         this.status = status;
     }
 
-    public User getUser_recipe() {
-        return user_recipe;
+    public User getUser_id() {
+        return user_id;
     }
 
-    public void setUser_recipe(User user_recipe) {
-        this.user_recipe = user_recipe;
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
     }
 
     public Set<Favorites> getFavorites() {
