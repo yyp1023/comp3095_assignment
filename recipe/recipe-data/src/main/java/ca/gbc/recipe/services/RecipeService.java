@@ -19,6 +19,7 @@ public class RecipeService {
 
     public List<Recipe> findByName(String name) {
         return findByName(name);
+
     }
 
 }

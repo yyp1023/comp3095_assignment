@@ -20,7 +20,4 @@ public class UserService {
 
     public User getById(Integer id) { return repo.getById(id); }
 
-
-
-
 }

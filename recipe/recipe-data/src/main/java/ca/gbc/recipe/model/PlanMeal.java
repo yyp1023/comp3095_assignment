@@ -7,6 +7,13 @@ import java.time.LocalDate;
 @Table(name = "plan_meal")
 public class PlanMeal extends BaseEntity {
 
+    @Column(name = "title")
+    private String title;
+
+
+    @Column(name = "description")
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user_meal;
@@ -17,6 +24,7 @@ public class PlanMeal extends BaseEntity {
 
     @Column(name = "date_created")
     private LocalDate date_created;
+
 
 
     public User getUser_meal() {

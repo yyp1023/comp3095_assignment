@@ -28,7 +28,7 @@ public class RecipeController {
     @RequestMapping("/createRecipe")
     public String createRecipe(Model model){
         Recipe recipe = new Recipe();
-        model.addAttribute("recipe",recipe);
+        model.addAttribute("recipe", recipe);
         model.addAttribute("localDate", LocalDate.now());
         model.addAttribute("time", LocalTime.now());
         return "recipes/createRecipe";

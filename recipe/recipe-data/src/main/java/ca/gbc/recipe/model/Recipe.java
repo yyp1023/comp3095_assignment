@@ -47,10 +47,6 @@ public class Recipe extends BaseEntity {
     @OneToMany(mappedBy = "user_selected_recipe")
     private Set<PlanMeal> planMeals;
 
-    @ManyToOne
-    @JoinColumn(name = "user_recipe")
-    private User user;
-
     public String getName() {
         return name;
     }
@@ -145,13 +141,5 @@ public class Recipe extends BaseEntity {
 
     public void setPlanMeals(Set<PlanMeal> planMeals) {
         this.planMeals = planMeals;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
