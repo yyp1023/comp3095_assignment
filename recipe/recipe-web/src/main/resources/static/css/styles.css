@@ -42,3 +42,8 @@ hr.dots{
 .bgGray{
     background-color: #474343;
 }
+input[type="datetime-local"] {
+    width: 30%;
+    height: 2rem;
+    /* More styles here */
+}

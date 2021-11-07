@@ -3,7 +3,7 @@ package ca.gbc.recipe.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/plan_meals")
+@RequestMapping("/users/plan_meal")
 @Controller
 public class PlanMealController {
 
