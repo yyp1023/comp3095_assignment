@@ -37,8 +37,8 @@
                     </ul>
                 </li>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search for a recipe" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
+                    <button class="btn btn-outline-success" type="submit"  onclick="clearSearch()" >Search</button>
                 </form>
             </ul>
             <form th:action="@{/users/logout}">
@@ -48,80 +48,32 @@
     </div>
 </nav>
 
-    <div class="container container-fluid">
+    <div class="container container-fluid" th:each="recipe : ${listRecipes}">
         <h3 class="padding-top3">Viewing all Recipes</h3>
         <div class="padding-top1">
             <div class="card">
-                <h5 class="card-header">Spaghetti</h5>
+                <h5 class="card-header" th:text="${recipe.name}">Spaghetti</h5>
                 <div class="card-body">
-                    <p>Cook time: 1.5 hour</p>
+                    <p th:text="${recipe.time}">Cook time: 1.5 hour</p>
                   <h5 class="card-title">Description: </h5>
-                  <p class="card-text">This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
+                  <p class="card-text" th:text="${recipe.description}">Description</p>
                   <h5 class="card-title">Equipments: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Ingredients: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p class="card-text"  th:text="${recipe.equipments}">Equipments.</p>
+                  <h5 class="card-title" >Ingredients: </h5>
+                  <p class="card-text" th:text="${recipe.ingredients}">Ingredients</p>
                   <h5 class="card-title">Instruction: </h5>
-                  <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                  <p class="card-text" th:text="${recipe.instruction}">instruction</p>
                   
                 </div>
               </div>
         </div>
 
-        <div class="padding-top1">
-            <div class="card">
-                <h5 class="card-header">Spaghetti</h5>
-                <div class="card-body">
-                    <p>Cook time: 1.5 hour</p>
-                  <h5 class="card-title">Description: </h5>
-                  <p class="card-text">This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
-                  <h5 class="card-title">Equipments: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Ingredients: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Instruction: </h5>
-                  <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                  
-                </div>
-              </div>
-        </div>
-
-        <div class="padding-top1">
-            <div class="card">
-                <h5 class="card-header">Spaghetti</h5>
-                <div class="card-body">
-                    <p>Cook time: 1.5 hour</p>
-                  <h5 class="card-title">Description: </h5>
-                  <p class="card-text">This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
-                  <h5 class="card-title">Equipments: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Ingredients: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Instruction: </h5>
-                  <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                  
-                </div>
-              </div>
-        </div>
-
-        <div class="padding-top1">
-            <div class="card">
-                <h5 class="card-header">Spaghetti</h5>
-                <div class="card-body">
-                    <p>Cook time: 1.5 hour</p>
-                  <h5 class="card-title">Description: </h5>
-                  <p class="card-text">This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
-                  <h5 class="card-title">Equipments: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Ingredients: </h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h5 class="card-title">Instruction: </h5>
-                  <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                  
-                </div>
-              </div>
-        </div>
     </div>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

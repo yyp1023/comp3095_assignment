@@ -7,10 +7,6 @@ import java.time.LocalDate;
 @Table(name = "plan_meal")
 public class PlanMeal extends BaseEntity {
 
-    @Column(name = "title")
-    private String title;
-
-
     @Column(name = "description")
     private String description;
 

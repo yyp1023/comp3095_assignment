@@ -20,7 +20,12 @@ public class RecipeService {
 
     public List<Recipe> findByName(String name) {
         return findByName(name);
-
     }
 
+    public List<Recipe> listAll(String keyword) {
+        if (keyword != null) {
+            return repo.search(keyword);
+        }
+        return repo.findAll();
+    }
 }
