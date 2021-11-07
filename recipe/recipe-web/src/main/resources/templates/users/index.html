@@ -51,8 +51,9 @@
     <div class="container container-fluid">
         <div class="row">
             <div class="col-3 padding-top1">
-                <h1>Ready to cook?</h1>
-                <h4>Welcome <span> Kent P</span></h4>
+
+                <h2>Welcome <span> <div th:text="${session.username}"></div></span></h2>
+                <h4>Ready to cook?</h4>
             </div>
             <div class="col-9 padding-top3">
                 <h3>Your Recipes</h3>
