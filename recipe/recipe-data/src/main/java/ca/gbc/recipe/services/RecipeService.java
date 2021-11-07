@@ -17,6 +17,10 @@ public class RecipeService {
         repo.save(object);
     }
 
+    public List<Recipe> findAll() {
+        return repo.findAll();
+    }
+
     public List<Recipe> findByName(String name) {
         return findByName(name);
 

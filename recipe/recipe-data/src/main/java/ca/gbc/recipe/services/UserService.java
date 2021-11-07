@@ -18,6 +18,6 @@ public class UserService {
          repo.save(object);
     }
 
-    public User getById(Integer id) { return repo.getById(id); }
+    public User getById(Long id) { return repo.getById(id); }
 
 }
