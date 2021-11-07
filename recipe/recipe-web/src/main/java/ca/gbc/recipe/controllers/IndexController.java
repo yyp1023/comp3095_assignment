@@ -5,9 +5,7 @@ import ca.gbc.recipe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -37,15 +35,15 @@ public class IndexController {
             String upass = user.getPassword();
 
             if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
-                session.setAttribute("username", username);
-                return "redirect:/users/index";
+                session.setAttribute("user", user);
+                return "redirect:/user/" + user.getId();
             } else {
                 modelMap.put("error", "Invalid Account");
                 return "/index";
             }
         } else {
             modelMap.put("error", "Invalid Account");
-            return "index";
+            return "/index";
         }
     }
 

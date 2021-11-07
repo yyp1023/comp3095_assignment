@@ -1,7 +1,6 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.Recipe;
-import ca.gbc.recipe.model.User;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

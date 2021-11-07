@@ -1,14 +1,14 @@
 package ca.gbc.recipe.model;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "plan_meal")
+@Table(name = "plan_meals")
 public class PlanMeal extends BaseEntity {
-
-    @Column(name = "description")
-    private String description;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -18,8 +18,18 @@ public class PlanMeal extends BaseEntity {
     @JoinColumn(name = "recipe_id")
     private Recipe user_selected_recipe;
 
+    @Override
+    public String toString() {
+        return "PlanMeal{" +
+                "user_meal=" + user_meal +
+                ", user_selected_recipe=" + user_selected_recipe +
+                ", planned_date=" + planned_date +
+                '}';
+    }
+
     @Column(name = "date_created")
-    private LocalDate date_created;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date planned_date;
 
 
 
@@ -39,11 +49,11 @@ public class PlanMeal extends BaseEntity {
         this.user_selected_recipe = user_selected_recipe;
     }
 
-    public LocalDate getDate_created() {
-        return date_created;
+    public Date getPlanned_date() {
+        return planned_date;
     }
 
-    public void setDate_created(LocalDate date_created) {
-        this.date_created = date_created;
+    public void setPlanned_date(Date planned_date) {
+        this.planned_date = planned_date;
     }
 }

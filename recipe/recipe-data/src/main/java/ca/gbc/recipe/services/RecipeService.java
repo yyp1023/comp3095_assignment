@@ -14,6 +14,7 @@ public class RecipeService {
     @Autowired
     private RecipeRepository repo;
 
+
     public void save(Recipe object) {
         repo.save(object);
     }
@@ -27,5 +28,9 @@ public class RecipeService {
             return repo.search(keyword);
         }
         return repo.isPublic();
+    }
+
+    public List<Recipe> findAll() {
+        return  repo.findAll();
     }
 }
