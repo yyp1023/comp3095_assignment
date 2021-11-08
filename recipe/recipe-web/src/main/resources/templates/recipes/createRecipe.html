@@ -61,16 +61,16 @@
           </div>
             <div class="col-md-2">
                 <label  class="form-label">Type</label>
-                <select class="form-select" required>
-                    <option selected>Breakfast</option>
-                    <option value="1">Lunch</option>
-                    <option value="2">Dinner</option>
-                    <option value="3">Snack</option>
+                <select th:field="*{type}" class="form-select" required>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
                 </select>
             </div>
             <div class="col-md-2">
                 <label  class="form-label">Status</label>
-                <select class="form-select" required>
+                <select th:field="*{status}" class="form-select" required>
                     <option value="TRUE">Private</option>
                     <option value="FALSE">Public</option>
                 </select>
@@ -92,7 +92,9 @@
           </div>
             <div class="col-2 form-group">
                 <label class="form-label">Date Created</label>
-                <label th:field="*{dateCreated}" class="form-control" th:text="${localDate}"></label>
+                <input type="hidden" th:text="${localDate}">
+<!--                <textarea th:field="*{dateCreated}" th:datetime="${localDate}" class="form-control" rows="3"></textarea>-->
+<!--                <input  type="date" th:field="*{dateCreated}" th:text="${localDate}" class="form-control">-->
             </div>
 
           <div class="col-12">
