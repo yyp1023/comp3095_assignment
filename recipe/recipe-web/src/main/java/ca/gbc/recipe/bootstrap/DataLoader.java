@@ -84,7 +84,6 @@ public class DataLoader implements CommandLineRunner {
         recipeService.save(recipe2);
         System.out.println("HAHA");
 
-
     }
 
 }
