@@ -38,10 +38,6 @@ public class UserController {
     @RequestMapping(value = "/registered", method= RequestMethod.POST)
     public String success(@ModelAttribute("user") User user){
         userService.save(user);
-        /*
-        * database codes here
-        *
-        * */
         //prints data just to check if this function is working
         System.out.println(user.getFirstname());
         System.out.println(user.getLastname());
