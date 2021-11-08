@@ -1,31 +1,53 @@
 package ca.gbc.recipe.controllers;
 
-import ca.gbc.recipe.services.PlanMealService;
-import ca.gbc.recipe.services.RecipeService;
-import ca.gbc.recipe.services.UserService;
+import ca.gbc.recipe.model.PlanMeal;
+import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.repository.PlanMealRepository;
+import ca.gbc.recipe.repository.RecipeRepository;
+import ca.gbc.recipe.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/users/plan_meals")
+import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+
+@RequestMapping("/users/plan_meal")
 @Controller
 public class PlanMealController {
 
-    private final PlanMealService planMealService;
+    @Autowired
+    RecipeRepository recipeService;
 
-    public PlanMealController(PlanMealService planMealService, RecipeService recipeService, UserService userService) {
-        this.planMealService = planMealService;
+    @Autowired
+    PlanMealRepository planMealService;
+
+    @Autowired
+    UserRepository userService;
+
+    @RequestMapping({"/planned_meals"})
+    public String viewPlannedMeals(){
+
+        return "plan_meals/index";
     }
 
-    @RequestMapping({"", "/", "/index", "index.html"})
-    public String listUser(Model model) {
-        model.addAttribute("planMeals", planMealService.findAll());
-
-
-
-
-
-
-        return "users/plan_meals/index";
+    @PostMapping(value= "/createPlan")
+    public String planMealCreated(@ModelAttribute("planMeal") PlanMeal planMeal){
+        planMealService.save(planMeal);
+        return  "plan_meals/index";
     }
+
+    @RequestMapping({ "/createPlan"})
+    public String createMeal(@PathVariable("userId") Long userId, Model model, @RequestParam(name = "setUser_selected_recipe") Long setUser_selected_recipe){
+        PlanMeal planmeal = new PlanMeal();
+        planmeal.setUser_meal(userService.findUserById(userId));
+        planmeal.setUser_selected_recipe(recipeService.findRecipeById(setUser_selected_recipe));
+        model.addAttribute(planmeal);
+        model.addAttribute("localDate", LocalDate.now());
+        model.addAttribute("recipes", recipeService.findAll());
+        return "/plan_meals/createPlan";
+    }
+
 }
