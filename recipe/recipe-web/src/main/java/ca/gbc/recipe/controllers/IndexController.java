@@ -36,6 +36,7 @@ public class IndexController {
 
             if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
                 session.setAttribute("user", user);
+                session.setAttribute("userId", user.getId());
                 return "redirect:/user/" + user.getId();
             } else {
                 modelMap.put("error", "Invalid Account");

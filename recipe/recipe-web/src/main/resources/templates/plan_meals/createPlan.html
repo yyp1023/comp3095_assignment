@@ -52,9 +52,9 @@
       <h2 class="padding-top1">Plan A meal</h2>
     <div class="padding-top1">
         <h5>Select recipe</h5>
-        <select  class="form-select width30" required>
-            <tr th:each="recipe: ${recipes}">
-                <option th:field="*{user_selected_recipe}" th:value="${recipe}" name="recipeId"> <td th:text="${recipe.name}"/></option>
+        <select  class="form-select width30" th:field="*{user_selected_recipe}" required>
+            <tr th:each="recipe: ${recipes}" >
+                <option th:value="${recipe.id}"><td th:text="${recipe.name}"/></option>
             </tr>
         </select>
         <h5>Select Date</h5>
