@@ -45,7 +45,7 @@
             </ul>
             <div class="dropdown pushLeft">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    User Name
+                    <div th:text="${session.user.username}"></div>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
@@ -61,10 +61,10 @@
 <div class="container container-fluid">
     <div class="row">
         <div class="col-12 padding-top1">
-            <h1>Account Info</h1>
-            <h5>Name: </h5>
-            <h5>Usermame: </h5>
-            <h5>Number of recipe: </h5>
+            <h1>Account Info </h4></h1>
+            <h5>Name: <span th:text="${session.user.firstname}"></span> <span th:text="${session.user.lastname}"> </span> </h5>
+            <h5>Usermame: <span th:text="${session.user.username}"> </span></h5>
+            <h5>Number of recipe: 3 </h5>
         </div>
 
     </div>

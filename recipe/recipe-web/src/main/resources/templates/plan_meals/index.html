@@ -34,8 +34,8 @@
                         Meal Planner
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/users/plan_meals/createPlan}">Plan A Meal</a></li>
-                        <li><a class="dropdown-item" th:href="@{/users/plan_meals/planned_meals}">View Planned Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -65,13 +65,13 @@
         <h2 class="padding-top1">Planned meals</h2>
 		<div class="row row-striped" >
 			<div class="col-2 text-right">
-				<h1 class="display-4"><span th:text="${meal.planned_date.getDay()}" class="bgGray badge badge-secondary"></span></h1>
+				<h1 class="display-4"><span th:text="${meal.planned_date.date}" class="bgGray badge badge-secondary"></span></h1>
 				<h2 th:text="${meal.planned_date.month}">OCT</h2>
 			</div>
 			<div class="col-10">
 				<h3 class="text-uppercase"><strong th:text="${meal.user_selected_recipe.name}"></strong></h3>
 				<ul class="list-inline">
-				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true" th:text="${meal.planned_date.toGMTString()}"></i></li>
+				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true" th:text="${meal.planned_date.toLocaleString()}"></i></li>
 					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true" th:text="${meal.user_selected_recipe.time}"></i></li>
 
 				</ul>

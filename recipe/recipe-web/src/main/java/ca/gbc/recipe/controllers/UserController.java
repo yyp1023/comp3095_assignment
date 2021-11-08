@@ -59,7 +59,7 @@ public class UserController {
         session.invalidate();
         return "redirect:/";
     }
-}
+
 
     @RequestMapping("/accountInfo")
     public String accountInfo(){

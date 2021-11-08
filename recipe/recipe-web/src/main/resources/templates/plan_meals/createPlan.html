@@ -32,8 +32,8 @@
                         Meal Planner
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/users/plan_meals/createPlan}">Plan A Meal</a></li>
-                        <li><a class="dropdown-item" th:href="@{/users/plan_meals/planned_meals}">View Planned Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -55,7 +55,7 @@
         </div>
     </div>
 </nav>
-<form th:action="@{/user/${session.user.id}/plan_meal/createPlan}" th:object="${planMeal}" method="post">
+<form th:action="@{/users/plan_meal/createPlan}" th:object="${planMeal}" method="post">
     <div class="container container-fluid">
       <h2 class="padding-top1">Plan A meal</h2>
     <div class="padding-top1">
@@ -66,7 +66,7 @@
             </tr>
         </select>
         <h5>Select Date</h5>
-        <input  type="datetime-local" class="form-control" th:field="*{{planned_date.timezoneOffset}}"> <br>
+        <input  type="datetime-local" class="form-control" th:field="*{{planned_date}}"> <br>
         <input type="hidden" th:value="${session.user}" th:field="*{user_meal}">
 
 
