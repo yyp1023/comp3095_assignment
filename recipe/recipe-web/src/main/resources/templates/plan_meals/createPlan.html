@@ -36,13 +36,13 @@
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search for a recipe" aria-label="Search">
+                <form class="d-flex" th:action="@{/recipes/view_recipe}">
+                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
             <div class="dropdown pushLeft">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
