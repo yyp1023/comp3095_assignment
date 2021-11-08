@@ -28,4 +28,6 @@ public class RecipeService {
         }
         return repo.isPublic();
     }
+
+    public List<Recipe> findAll() { return repo.findAll(); }
 }

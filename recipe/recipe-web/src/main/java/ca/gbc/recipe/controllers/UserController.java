@@ -1,6 +1,7 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,12 +20,33 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    RecipeService recipeService;
 
     @RequestMapping({"", "/", "/index", "index.html", "/profile"})
-    public String showProfile(Model model) {
+    public String index(Model model) {
 //        model.addAttribute("users", userService.findAll());
         return "users/index";
     }
+
+    @RequestMapping("/viewProfile")
+    public String showProfile(Model model, Integer id) {
+        model.addAttribute("users", userService.findAll());
+        return "users/viewProfile";
+    }
+
+    @RequestMapping("/viewMyRecipes")
+    public String findRecipes(Model model) {
+        model.addAttribute("recipes", recipeService.findAll());
+        return "users/viewMyRecipes";
+    }
+
+    @RequestMapping("/viewFavoriteRecipes")
+    public String findFavoriteRecipes(Model model) {
+        model.addAttribute("recipes", recipeService.findAll());
+        return "users/viewFavoriteRecipes";
+    }
+
 //    @PostMapping({"", "/", "/index", "index.html"})
 //    public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
 //                             HttpSession session, ModelMap modelMap)

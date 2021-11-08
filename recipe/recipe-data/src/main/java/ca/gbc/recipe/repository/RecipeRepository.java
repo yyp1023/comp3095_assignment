@@ -15,4 +15,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     @Query("SELECT r FROM Recipe r WHERE r.status = FALSE ")
     public List<Recipe> isPublic();
+
+//    @Query("SELECT r FROM Recipe r WHERE r.user_id = r.id")
+//    public List<Recipe> findByUserId(Integer id);
 }
