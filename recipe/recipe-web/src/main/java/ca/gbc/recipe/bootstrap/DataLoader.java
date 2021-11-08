@@ -63,7 +63,7 @@ public class DataLoader implements CommandLineRunner {
         recipe1.setDescription("Maligo");
         recipe1.setInstruction("HAHAHAHA");
         recipe1.setName("Masarap ako");
-        recipe1.setStatus(true);
+        recipe1.setStatus(false);
         recipe1.setType("Lunch");
         recipe1.setTime("1.5 hours");
         recipe1.setIngredients("ako ikaw mama mo");
@@ -77,7 +77,7 @@ public class DataLoader implements CommandLineRunner {
         recipe2.setDescription("HAHA");
         recipe2.setInstruction("HAHA");
         recipe2.setName("HAHA");
-        recipe2.setStatus(true);
+        recipe2.setStatus(false);
         recipe2.setType("HAHA");
         recipe2.setTime("HAHA");
         recipe2.setIngredients("HAHA");

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -19,5 +20,5 @@ public class UserService {
     }
 
     public User getById(Long id) { return repo.getById(id); }
-
+    public List<User> findAll() { return repo.findAll(); }
 }

@@ -36,13 +36,13 @@
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search for a recipe" aria-label="Search">
+                <form class="d-flex" th:action="@{/recipes/view_recipe}">
+                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
             <div class="dropdown pushLeft">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -56,31 +56,31 @@
     </div>
 </nav>
 
-
 <div class="container container-fluid">
-    <div class="row">
-        <div class="col-3 padding-top1">
-            <h1>My Favourites</h1>
-        </div>
-        <div class="col-9 padding-top3">
-                <div class="padding-top1">
-                    <div class="card">
-                        <h5 class="card-header">Spaghetti</h5>
-                        <div class="card-body">
-                            <p>Status </p>
-                            <p>Type: </p>
-                            <p>Cook time: 1.5 hour</p>
-                            <h5 class="card-title">Description: </h5>
-                            <p class="card-text" >This recipe has been handed down from my mother. It is a family favorite and will not be replaced! (Definite husband pleaser!)</p>
-                            <h5 class="card-title">Equipments: </h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <h5 class="card-title">Ingredients: </h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <h5 class="card-title" >Instruction: </h5>
-                            <p class="card-text">Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender. Drain grease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        </div>
-                    </div>
+    <div class="col-9 padding-top3">
+        <h3>Your Favorite Recipes</h3>
+        <div class="padding-top1" th:each="favorite : ${favorites}">
+            <div class="card">
+                <h5 class="card-header" th:text="${favorite.recipe_fav.name}"></h5>
+                <div class="card-body">
+                    <h5 class="card-title">Equipments: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.equipments}"></p>
+                    <h5 class="card-title">Ingredients: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.ingredients}"></p>
+                    <h5 class="card-title">Description: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.description}"></p>
+                    <h5 class="card-title">Instruction: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.instruction}"></p>
+                    <h5 class="card-title">Time: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.time}"></p>
+                    <h5 class="card-title">Type: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.type}"></p>
+                    <h5 class="card-title">Date Created: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.dateCreated}"></p>
+                    <h5 class="card-title">Status: </h5>
+                    <p class="card-text" th:text="${favorite.recipe_fav.status}"></p>
                 </div>
+            </div>
         </div>
     </div>
 </div>
