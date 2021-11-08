@@ -44,6 +44,7 @@
                 </form>
             </ul>
             <div class="dropdown pushLeft">
+<!--                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">> -->
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     User Name
                 </button>
@@ -63,6 +64,7 @@
     <h3 class="padding-top3">Recipe Created</h3>
     <div class="padding-top1">
         <div class="card" th:object="${recipe}">
+<!--             <h5 class="card-header" th:text="${recipe.getName()}">Spaghetti</h5> -->
             <h5 class="card-header" th:text="${recipe.getName() + ' By: Name'}">Spaghetti</h5>
             <div class="card-body">
                 <p th:text="${'Status: ' + recipe.getStatus}">Type: </p>
@@ -80,6 +82,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

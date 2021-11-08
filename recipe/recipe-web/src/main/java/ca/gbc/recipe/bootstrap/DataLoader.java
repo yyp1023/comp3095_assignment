@@ -60,6 +60,7 @@ public class DataLoader implements CommandLineRunner {
 
         Recipe recipe1 = new Recipe();
         recipe1.setDateCreated(LocalDate.now());
+
         recipe1.setEquipments("Meat Thermometer, Cast iron pan, Tongs");
         recipe1.setDescription("Great Japanese teriyaki-style marinated ribeye steak with a from-scratch teriyaki sauce.");
         recipe1.setInstruction("Cook the steaks in a hot skillet, wok, or hibachi over medium heat; 7 minutes per side for medium. " +
@@ -69,12 +70,14 @@ public class DataLoader implements CommandLineRunner {
         recipe1.setType("Dinner");
         recipe1.setTime("2.5 hours");
         recipe1.setIngredients("2 tablespoons soy sauce, 2 tablespoons water, 1 tablespoon white sugar, 1 teaspoon olive oil, 2 (6 ounce) lean beef rib eye steaks");
+
         recipe1.setUser_id(user2);
         recipeService.save(recipe1);
 
 
         Recipe recipe2 = new Recipe();
         recipe2.setDateCreated(LocalDate.now());
+
         recipe2.setEquipments("Mixing bowl, waffle maker, whisk, mixer");
         recipe2.setDescription("A lovely, crispy waffle perfect for the morning.");
         recipe2.setInstruction("In a large bowl, mix together flour, salt, baking powder and sugar; set aside. Preheat waffle iron to desired temperature.");
@@ -83,6 +86,7 @@ public class DataLoader implements CommandLineRunner {
         recipe2.setType("Breakfast");
         recipe2.setTime("25 mins");
         recipe2.setIngredients("2 cups all-purpose flour, 1 teaspoon salt, 4 teaspoons baking powder, 2 tablespoons white sugar");
+
         recipe2.setUser_id(user1);
         recipeService.save(recipe2);
 

@@ -39,11 +39,14 @@
                     </ul>
                 </li>
                 <form class="d-flex">
+<!--                     <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}"> -->
                     <input class="form-control me-2" type="search" placeholder="Search for a recipe" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
             <div class="dropdown pushLeft">
+<!--                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
+                    User Name -->
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <div th:text="${session.user.username}"></div>
                 </button>
@@ -59,7 +62,28 @@
 </nav>
 
 <div class="container container-fluid">
-    <div class="row">
+    <!-- kent -->
+    <div class="col-9 padding-top3">
+        <h3>Your Profile</h3>
+        <div class="padding-top1" th:each="user : ${users}">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">First Name: </h5>
+                    <p class="card-text" th:text="${user.firstname}">User First Name</p>
+                    <h5 class="card-title">Last Name: </h5>
+                    <p class="card-text" th:text="${user.lastname}">User Last Name</p>
+                    <h5 class="card-title">Username: </h5>
+                    <p class="card-text" th:text="${user.username}">User Username</p>
+                    <h5 class="card-title">Password: </h5>
+                    <p class="card-text" th:text="${user.password}">User Password</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- mark -->
+<!--     <div class="row">
         <div class="col-12 padding-top1">
             <h1>Account Info </h4></h1>
             <h5>Name: <span th:text="${session.user.firstname}"></span> <span th:text="${session.user.lastname}"> </span> </h5>
@@ -68,8 +92,7 @@
         </div>
 
     </div>
-</div>
-
+</div> -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

@@ -1,6 +1,9 @@
 package ca.gbc.recipe.controllers;
 
+import ca.gbc.recipe.model.Favorites;
 import ca.gbc.recipe.model.Recipe;
+import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.services.FavoriteService;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @RequestMapping("/recipes")
@@ -23,13 +25,41 @@ public class RecipeController {
 
     @Autowired
     RecipeService recipeService;
+    @Autowired
     UserService userService;
+    @Autowired
+    FavoriteService favoriteService;
+
+    @RequestMapping({"", "/", "/index", "index.html"})
+    public String listUser(Model model) {
+        model.addAttribute("users", userService.findAll());
+        return "users/index";
+    }
 
     @RequestMapping({"/view_recipe"})
-    public String viewRecipe(Model model, @Param("keyword") String keyword) {
+    public String viewRecipe(Model model, ModelMap modelMap, @Param("keyword") String keyword){
         List<Recipe> listRecipes = recipeService.listAll(keyword);
         model.addAttribute("listRecipes", listRecipes);
+        if(recipeService.listAll(keyword) == null){
+            modelMap.put("err", "No Recipe found, try to search by name or description!");
+            return "recipes/index";
+        };
+        Favorites favorite = new Favorites();
+        model.addAttribute("favorite", favorite);
         model.addAttribute("keyword", keyword);
+        return "recipes/index";
+    }
+
+    @RequestMapping(value = "/marked", method= RequestMethod.POST)
+    public String markedAsFav(@ModelAttribute("favorite") Favorites favorites,
+                              HttpSession session,
+                              @Param("rec_id") Long rec_id){
+        User user = (User)session.getAttribute("user");
+        Recipe recipe = recipeService.getById(rec_id);
+
+        favorites.setUser_fav(user);
+        favorites.setRecipe_fav(recipe);
+        favoriteService.save(favorites);
         return "recipes/index";
     }
 
@@ -47,7 +77,13 @@ public class RecipeController {
         model.addAttribute("recipe", recipe);
         session.getAttribute("username");
         recipe.setDateCreated(LocalDate.now());
-        recipeService.save(recipe);
+
+        // kent
+        User user = (User)session.getAttribute("user");
+        recipe.setUser_id(user);
+
+        // mark
+        // recipeService.save(recipe);
         return "recipes/recipe_created";
     }
 }

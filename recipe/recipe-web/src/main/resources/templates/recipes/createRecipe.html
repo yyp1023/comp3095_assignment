@@ -42,6 +42,7 @@
                 </form>
             </ul>
             <div class="dropdown pushLeft">
+<!--                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}"> -->
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     User Name
                 </button>
@@ -59,7 +60,7 @@
     <div class="container container-fluid">
       <h2 class="padding-top1">Creating Recipe</h2>
       <div class="width60">
-        <form class="row g-3" action="#" th:action="@{/recipes/recipe_created}" th:object="${recipe}" method="post" >
+        <form class="row g-3" th:action="@{/recipes/recipe_created}" th:object="${recipe}" method="post" >
           <div class="col-md-5">
             <label class="form-label">Recipe Name</label>
             <input  type="text" th:field="*{name}" class="form-control" required autofocus>
@@ -99,6 +100,7 @@
             <label class="form-label">Instructions</label>
               <textarea th:field="*{instruction}" class="form-control" rows="3" required></textarea>
           </div>
+            <input type="hidden" th:value="${session.user}" th:field="*{user_id}">
           <div class="col-12">
             <button type="submit" class="btn btn-primary" >Create Recipe</button>
           </div>
