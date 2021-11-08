@@ -42,7 +42,8 @@
                 </form>
             </ul>
             <div class="dropdown pushLeft">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
+<!--                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}"> -->
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -55,18 +56,18 @@
         </div>
     </div>
 </nav>
-<form th:action="@{/user/${session.user.id}/plan_meal/createPlan}" th:object="${planMeal}" method="post">
+<form th:action="@{/users/plan_meal/createPlan}" th:object="${planMeal}" method="post">
     <div class="container container-fluid">
       <h2 class="padding-top1">Plan A meal</h2>
     <div class="padding-top1">
         <h5>Select recipe</h5>
-        <select  class="form-select width30" required>
-            <tr th:each="recipe: ${recipes}">
-                <option th:field="*{user_selected_recipe}" th:value="${recipe}" name="recipeId"> <td th:text="${recipe.name}"/></option>
+        <select  class="form-select width30" th:field="*{user_selected_recipe}" required>
+            <tr th:each="recipe: ${recipes}" >
+                <option th:value="${recipe.id}"><td th:text="${recipe.name}"/></option>
             </tr>
         </select>
         <h5>Select Date</h5>
-        <input  type="datetime-local" class="form-control" th:field="*{{planned_date.timezoneOffset}}"> <br>
+        <input  type="datetime-local" class="form-control" th:field="*{{planned_date}}"> <br>
         <input type="hidden" th:value="${session.user}" th:field="*{user_meal}">
 
 

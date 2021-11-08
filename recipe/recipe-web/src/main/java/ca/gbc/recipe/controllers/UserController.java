@@ -34,12 +34,18 @@ public class UserController {
         return "users/index";
     }
 
+
+//        model.addAttribute("users", userService.findById());    @RequestMapping({"", "/", "/index", "index.html"})
     @RequestMapping({"/profile"})
-    public String showProfile(Model model) {
-//        model.addAttribute("users", userService.findById());
+    public String home(){
         return "users/index";
     }
 
+
+
+    public String showProfile(Model model) {
+        return " ";
+    }
 
     @RequestMapping("/register")
     public String userCreate(Model model){
@@ -83,3 +89,4 @@ public class UserController {
         return "users/myFavourite";
     }
 }
+

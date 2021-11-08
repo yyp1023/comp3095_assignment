@@ -3,6 +3,7 @@ package ca.gbc.recipe.controllers;
 import ca.gbc.recipe.model.User;
 import ca.gbc.recipe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,7 @@ public class IndexController {
 
             if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
                 session.setAttribute("user", user);
-                return "redirect:/user";
+                return "redirect:/users/";
             } else {
                 modelMap.put("error", "Invalid Account");
                 return "/index";

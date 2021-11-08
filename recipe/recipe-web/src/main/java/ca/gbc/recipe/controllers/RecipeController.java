@@ -77,9 +77,13 @@ public class RecipeController {
         model.addAttribute("recipe", recipe);
         session.getAttribute("username");
         recipe.setDateCreated(LocalDate.now());
+
+        // kent
         User user = (User)session.getAttribute("user");
         recipe.setUser_id(user);
-        recipeService.save(recipe);
+
+        // mark
+        // recipeService.save(recipe);
         return "recipes/recipe_created";
     }
 }
