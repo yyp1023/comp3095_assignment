@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
-@RequestMapping("/user/{userId}/plan_meal")
+@RequestMapping("/users/plan_meal")
 @Controller
 public class PlanMealController {
 

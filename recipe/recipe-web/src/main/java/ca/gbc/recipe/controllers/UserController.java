@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
-@RequestMapping("/user/{userId}")
+@RequestMapping("/users")
 @Controller
 public class UserController {
 
