@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
-@RequestMapping("/users")
+@RequestMapping("/user/{userId}")
 @Controller
 public class UserController {
 
@@ -21,13 +21,17 @@ public class UserController {
     UserService userService;
 
     @RequestMapping({"", "/", "/index", "index.html"})
-    public String home(){
+    public String listUser(Model model) {
+//        model.addAttribute("users", userService.findAll());
         return "users/index";
     }
 
+    @RequestMapping({"/profile"})
     public String showProfile(Model model) {
-        return " ";
+//        model.addAttribute("users", userService.findById());
+        return "users/index";
     }
+
 
     @RequestMapping("/register")
     public String userCreate(Model model){
@@ -35,20 +39,17 @@ public class UserController {
         model.addAttribute(user);
         return "users/register";
     }
+
     @RequestMapping(value = "/registered", method= RequestMethod.POST)
     public String success(@ModelAttribute("user") User user){
         userService.save(user);
-        //prints data just to check if this function is working
-        System.out.println(user.getFirstname());
-        System.out.println(user.getLastname());
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
         return "users/success";
     }
+
     @GetMapping(value= "/logout")
     public String logout(HttpSession session)
     {
-        session.removeAttribute("username");
+        session.removeAttribute("user");
         session.invalidate();
         return "redirect:/";
     }
