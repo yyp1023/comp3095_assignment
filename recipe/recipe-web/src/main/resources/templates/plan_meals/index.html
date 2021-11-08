@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <form class="d-flex" th:action="@{/recipes/view_recipe}">
-                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
+                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
@@ -59,11 +59,11 @@
 </nav>
 
 
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">	
-	
-	<div class="container" th:each="meal : ${meals}">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+	<div class="container" >
         <h2 class="padding-top1">Planned meals</h2>
-		<div class="row row-striped" >
+		<div class="row row-striped" th:each="meal : ${meals}" >
 			<div class="col-2 text-right">
 				<h1 class="display-4"><span th:text="${meal.planned_date.date}" class="bgGray badge badge-secondary"></span></h1>
 				<h2 th:text="${meal.planned_date.month}">OCT</h2>

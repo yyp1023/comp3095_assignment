@@ -1,14 +1,25 @@
+//* Project: < project name … >
+//        * Assignment: < assignment 1 >
+//        * Author(s): < Young Pyung Yoo>
+//                     < Kent Pedrocha >
+//                     < John Jademar Lopez>
+//                     <Mark Romel Trespeces>
+//        * Student Number: < 101254379 >
+//                          < 101266723 >
+//                          < 101231787 >
+//                          < 101258258 >
+//        * Date: November 7, 2021
+//        * Description: Controller for planMeal and the logics behind data manipulations of the user and the system
+
+
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.PlanMeal;
-import ca.gbc.recipe.model.Recipe;
 import ca.gbc.recipe.model.User;
 import ca.gbc.recipe.repository.PlanMealRepository;
 import ca.gbc.recipe.repository.RecipeRepository;
 import ca.gbc.recipe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

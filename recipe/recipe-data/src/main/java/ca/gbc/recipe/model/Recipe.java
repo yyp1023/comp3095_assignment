@@ -1,3 +1,18 @@
+//* Project: < project name … >
+//        * Assignment: < assignment 1 >
+//        * Author(s): < Young Pyung Yoo>
+//                     < Kent Pedrocha >
+//                     < John Jademar Lopez>
+//                     <Mark Romel Trespeces>
+//        * Student Number: < 101254379 >
+//                          < 101266723 >
+//                          < 101231787 >
+//                          < 101258258 >
+//        * Date: November 7, 2021
+//        * Description: Model for creating Recipe Entity
+
+
+
 package ca.gbc.recipe.model;
 
 import javax.persistence.*;

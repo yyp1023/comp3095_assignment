@@ -1,3 +1,18 @@
+//* Project: < project name … >
+//        * Assignment: < assignment 1 >
+//        * Author(s): < Young Pyung Yoo>
+//                     < Kent Pedrocha >
+//                     < John Jademar Lopez>
+//                     <Mark Romel Trespeces>
+//        * Student Number: < 101254379 >
+//                          < 101266723 >
+//                          < 101231787 >
+//                          < 101258258 >
+//        * Date: November 7, 2021
+//        * Description: Populates initial Data for the system
+
+
+
 package ca.gbc.recipe.bootstrap;
 
 import ca.gbc.recipe.model.Recipe;
@@ -9,9 +24,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 
 @Component
 public class DataLoader implements CommandLineRunner {
