@@ -1,4 +1,4 @@
-//* Project: < project name … >
+//* Project: < Recipe >
 //        * Assignment: < assignment 1 >
 //        * Author(s): < Young Pyung Yoo>
 //                     < Kent Pedrocha >
@@ -10,8 +10,6 @@
 //                          < 101258258 >
 //        * Date: November 7, 2021
 //        * Description: Model For creating User Entity
-
-
 
 package ca.gbc.recipe.model;
 

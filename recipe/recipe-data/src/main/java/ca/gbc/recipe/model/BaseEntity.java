@@ -1,5 +1,5 @@
 
-//* Project: < project name … >
+//* Project: < Recipe >
 //        * Assignment: < assignment 1 >
 //        * Author(s): < Young Pyung Yoo>
 //                     < Kent Pedrocha >
