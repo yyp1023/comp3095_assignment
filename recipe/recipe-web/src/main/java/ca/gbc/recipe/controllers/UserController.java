@@ -19,12 +19,16 @@ import ca.gbc.recipe.services.FavoriteService;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpSession;
 
 @RequestMapping("/users")
@@ -50,7 +54,6 @@ public class UserController {
         return "users/index";
     }
 
-
     @RequestMapping("/register")
     public String userCreate(Model model){
         User user = new User();
@@ -59,8 +62,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registered", method= RequestMethod.POST)
-    public String success(@ModelAttribute("user") User user){
+    public String success(@ModelAttribute("user") User user,  HttpSession session){
         userService.save(user);
+        session.setAttribute("user", user);
         return "users/success";
     }
 
@@ -91,5 +95,37 @@ public class UserController {
         User user = (User)session.getAttribute("user");
         model.addAttribute("favorites", favoriteService.findMyFav(user));
         return "users/myFavourite";
+    }
+
+    @RequestMapping("/resetPassword")
+    public String resetPassword(Model model, HttpSession session) {
+        return "users/resetPassword";
+    }
+
+
+    @RequestMapping(value = {"/resetPassword"}, method = RequestMethod.POST)
+    public String passwordReset(Model model, HttpSession session, @Param("newPassword") String newPassword,
+                                @Param("newPassword") String oldPassword, @Param("newPassword") String confirmPassword,
+                                ModelMap modelMap)  {
+        User user = (User)session.getAttribute("user");
+        User acc = userService.getById(user.getId());
+
+        model.addAttribute("newPassword", newPassword);
+        model.addAttribute("confirmPassword", confirmPassword);
+        model.addAttribute("oldPassword", oldPassword);
+
+        if (acc.getPassword().equalsIgnoreCase(oldPassword)) {
+            if (confirmPassword.equalsIgnoreCase(newPassword)) {
+                acc.setPassword(confirmPassword);
+                userService.save(acc);
+                return "redirect:/users/index";
+            } else {
+                modelMap.put("error", "Password Error");
+                return "/users/resetPassword";
+            }
+        } else {
+            modelMap.put("error", "Password Error");
+            return "/users/resetPassword";
+        }
     }
 }
