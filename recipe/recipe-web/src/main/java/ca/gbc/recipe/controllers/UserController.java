@@ -40,8 +40,7 @@ public class UserController {
     RecipeService recipeService;
     @Autowired
     FavoriteService favoriteService;
-    @Autowired
-    CartService cartService;
+
     @RequestMapping({"", "/", "/index", "index.html"})
     public String listUser(Model model) {
 //        model.addAttribute("users", userService.findAll());
@@ -86,52 +85,15 @@ public class UserController {
     @RequestMapping("/myRecipe")
     public String findRecipes(Model model, HttpSession session) {
         User user = (User)session.getAttribute("user");
-
-        if (ObjectUtils.isEmpty(recipeService.findMyRecipe(user))){
-            model.addAttribute("error", "There's no recipe in the meantime");
-        }
-        else{
-            model.addAttribute("recipes", recipeService.findMyRecipe(user));
-            model.addAttribute("user_id", user.getId());
-        }
+        model.addAttribute("recipes", recipeService.findMyRecipe(user));
         return "users/myRecipe";
     }
 
     @RequestMapping("/myFavourite")
-    public String findFavoriteRecipes(Model model, HttpSession session, RedirectAttributes redirAttrs) {
+    public String findFavoriteRecipes(Model model, HttpSession session) {
         User user = (User)session.getAttribute("user");
-
-        if (ObjectUtils.isEmpty(favoriteService.findMyFav(user))){
-            model.addAttribute("error", "There's no favorite in the meantime");
-        }
-        else{
-            model.addAttribute("favorites", favoriteService.findMyFav(user));
-        }
+        model.addAttribute("favorites", favoriteService.findMyFav(user));
         return "users/myFavourite";
-    }
-
-    @RequestMapping("/myCart")
-    public String findShoppingCart(Model model, HttpSession session, RedirectAttributes redirAttrs) {
-        User user = (User)session.getAttribute("user");
-
-        if (ObjectUtils.isEmpty(cartService.findMyShoppingCart(user))){
-            model.addAttribute("error", "Your shopping list is empty");
-        }
-        else{
-            model.addAttribute("ShoppingCart", cartService.findMyShoppingCart(user));
-        }
-        return "users/myCart";
-    }
-
-    @RequestMapping("deleteMyFav/{sid}")
-    public String deleteMyFav(@PathVariable(name="sid") Long sid, HttpSession session) {
-        favoriteService.deleteUsersByRecipe(sid);
-        return "redirect:/users/myFavourite";
-    }
-    @RequestMapping("deleteMyRecipe/{sid}")
-    public String deleteMyRecipe(@PathVariable(name="sid") Long sid, HttpSession session) {
-        recipeService.deleteMyRecipe(sid);
-        return "redirect:/users/myRecipe";
     }
 
     @RequestMapping("/resetPassword")
