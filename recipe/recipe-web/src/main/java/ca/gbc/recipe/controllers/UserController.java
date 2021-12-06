@@ -23,10 +23,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -127,5 +124,30 @@ public class UserController {
             modelMap.put("error", "Password Error");
             return "/users/resetPassword";
         }
+    }
+
+
+    @RequestMapping(value = "/update/{id}")
+    public String profileUpdate(@PathVariable(name="id") Long id ,Model model){
+        User user = userService.getById(id);
+        model.addAttribute("id", id);
+        model.addAttribute("users", userService.getById(user.getId()));
+        model.addAttribute("user_id", user.getId());
+        return "users/updateProfile";
+    }
+
+    @PostMapping(value = "/update/{id}")
+    public String updating(@PathVariable(name="id") Long id, @Param("firstname") String firstname,
+                           @Param("lastname") String lastname, @Param("username") String username, Model model){
+
+        User user = userService.getById(id);
+        model.addAttribute("users");
+        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        user.setUsername(username);
+        userService.save(user);
+        System.out.println(firstname);
+        System.out.println(id);
+        return "redirect:/users/accountInfo";
     }
 }
