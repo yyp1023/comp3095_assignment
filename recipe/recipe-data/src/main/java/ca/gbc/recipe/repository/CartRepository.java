@@ -9,12 +9,14 @@
 //                          < 101231787 >
 //                          < 101258258 >
 //        * Date: November 7, 2021
-//        * Description: Interface for Recipe Service
+//        * Description: Interface for Favourite Service
 
 
 package ca.gbc.recipe.repository;
 
+import ca.gbc.recipe.model.Favorites;
 import ca.gbc.recipe.model.Recipe;
+import ca.gbc.recipe.model.ShoppingCart;
 import ca.gbc.recipe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -25,23 +27,13 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+public interface CartRepository extends JpaRepository<ShoppingCart, Long> {
 
-    @Query("SELECT r FROM Recipe r WHERE CONCAT(r.name, ' ', r.description, ' ') LIKE %?1% AND r.status = FALSE")
-    public List<Recipe> search(String keyword);
-
-    @Query("SELECT r FROM Recipe r WHERE r.status = FALSE ")
-    public List<Recipe> isPublic();
-
-    @Query("SELECT r from Recipe r where r.id=?1")
-    public Recipe findRecipeById(Long recipeId);
-
-    @Query("SELECT r FROM Recipe r WHERE r.user_id =?1")
-    public List<Recipe> findByUser_id(User user_id);
-
+    @Query("SELECT r FROM ShoppingCart r WHERE r.user_cart =?1")
+    public List<Favorites> findMyFav(User user_id);
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Recipe r WHERE r.user_id.id = ?1")
-    void deleteMyRecipe(Long id);
+    @Query("DELETE FROM ShoppingCart r WHERE r.recipe_cart.id = ?1")
+    void deleteCart(Long id);
 }
