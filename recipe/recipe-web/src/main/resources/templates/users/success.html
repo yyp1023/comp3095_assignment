@@ -35,7 +35,6 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
-<<<<<<< HEAD
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -45,9 +44,6 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/shopping_list/view_shoppinglist}">View Shopping List</a></li>
                         <li><a class="dropdown-item" th:href="@{/shopping_list/createShoppingList}">Create Shopping List</a></li>
-=======
-                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     </ul>
                 </li>
                 <form class="d-flex" th:action="@{/recipes/view_recipe}">
@@ -60,17 +56,14 @@
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-<<<<<<< HEAD
                     <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
-=======
                     <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -86,7 +79,15 @@
         </div>
     </div>
 </div>
-
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

@@ -38,6 +38,15 @@
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Shopping List
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/shopping_list/view_shoppinglist}">View Shopping List</a></li>
+                        <li><a class="dropdown-item" th:href="@{/shopping_list/createShoppingList}">Create Shopping List</a></li>
+                    </ul>
+                </li>
                 <form class="d-flex">
                     <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
                     <button class="btn btn-outline-success" type="submit">Search</button>

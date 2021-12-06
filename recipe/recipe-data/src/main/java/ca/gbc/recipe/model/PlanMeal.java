@@ -43,11 +43,7 @@ public class PlanMeal extends BaseEntity {
     }
 
     @Column(name = "date_created")
-<<<<<<< HEAD
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-=======
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     private Date planned_date;
 
 
@@ -68,8 +64,6 @@ public class PlanMeal extends BaseEntity {
         this.user_selected_recipe = user_selected_recipe;
     }
 
-<<<<<<< HEAD
-=======
     public String viewShortMonth()
     {
         switch (planned_date.getMonth() + 1)
@@ -103,16 +97,11 @@ public class PlanMeal extends BaseEntity {
         }
     }
 
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     public Date getPlanned_date() {
         return planned_date;
     }
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     public void setPlanned_date(Date planned_date) {
         this.planned_date = planned_date;
     }

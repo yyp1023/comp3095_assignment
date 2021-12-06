@@ -33,19 +33,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
-<<<<<<< HEAD
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Shopping List
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/shopping_list/view_shoppinglist}">View Shopping List</a></li>
-                        <li><a class="dropdown-item" th:href="@{/shopping_list/createShoppingList}">Create Shopping List</a></li>
-=======
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -58,15 +46,10 @@
                     Account
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
-                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
-                    <li><a class="dropdown-item" th:href="@{/users/myCart}">My Cart</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
-<<<<<<< HEAD
                     <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
-=======
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -74,33 +57,6 @@
     </div>
 </nav>
 
-<<<<<<< HEAD
-<div class="container container-fluid">
-    <div class="col-9 padding-top3">
-        <h3>Your Favorite Recipes</h3>
-        <div class="padding-top1" th:each="favorite : ${favorites}">
-            <div class="card">
-                <h5 class="card-header" th:text="${favorite.recipe_fav.name}"></h5>
-                <div class="card-body">
-                    <h5 class="card-title">Equipments: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.equipments}"></p>
-                    <h5 class="card-title">Ingredients: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.ingredients}"></p>
-                    <h5 class="card-title">Description: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.description}"></p>
-                    <h5 class="card-title">Instruction: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.instruction}"></p>
-                    <h5 class="card-title">Time: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.time}"></p>
-                    <h5 class="card-title">Type: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.type}"></p>
-                    <h5 class="card-title">Date Created: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.dateCreated}"></p>
-                    <h5 class="card-title">Status: </h5>
-                    <p class="card-text" th:text="${favorite.recipe_fav.status}"></p>
-                </div>
-            </div>
-=======
 <div class="container">
     <div class="row">
         <div class="col-lg-10 mt-5 mb-5">
@@ -113,7 +69,6 @@
         <div class="col-lg-10 mt-5 mb-5">
             <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
             <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
-            <h1>My Favorites</h1>
             <table id="example" class="table table-bordered" style="width: 100%">
                 <thead>
                 <tr>
@@ -155,7 +110,6 @@
                 </tr>
                 </tbody>
             </table>
->>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
         </div>
     </div>
 </div>
