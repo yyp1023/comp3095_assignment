@@ -1,6 +1,7 @@
 package ca.gbc.recipe.repository;
 
 import ca.gbc.recipe.model.Recipe;
+import ca.gbc.recipe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,5 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     @Query("SELECT r FROM Recipe r WHERE r.user_id =?1")
     public List<Recipe> findByUser_id(User user_id);
 
-    @Query("SELECT r FROM Recipe r WHERE r.status = FALSE ")
-    public List<Recipe> isPublic();
 
 }
