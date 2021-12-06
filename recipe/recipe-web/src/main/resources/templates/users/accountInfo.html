@@ -39,21 +39,19 @@
                     </ul>
                 </li>
                 <form class="d-flex">
-<!--                     <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}"> -->
-                    <input class="form-control me-2" type="search" placeholder="Search for a recipe" aria-label="Search">
+                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
             <div class="dropdown pushLeft">
-<!--                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
-                    User Name -->
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div th:text="${session.user.username}"></div>
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
+                    User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -62,7 +60,6 @@
 </nav>
 
 <div class="container container-fluid">
-    <!-- kent -->
     <div class="col-9 padding-top3">
         <h3>Your Profile</h3>
         <div class="padding-top1" th:each="user : ${users}">
@@ -81,19 +78,6 @@
         </div>
     </div>
 </div>
-
- <!-- mark -->
-<!--     <div class="row">
-        <div class="col-12 padding-top1">
-            <h1>Account Info </h4></h1>
-            <h5>Name: <span th:text="${session.user.firstname}"></span> <span th:text="${session.user.lastname}"> </span> </h5>
-            <h5>Usermame: <span th:text="${session.user.username}"> </span></h5>
-            <h5>Number of recipe: 3 </h5>
-        </div>
-
-    </div>
-</div> -->
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

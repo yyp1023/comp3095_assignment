@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <form class="d-flex" th:action="@{/recipes/view_recipe}">
-                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search" th:value="${keyword}">
+                    <input class="form-control me-2" name="keyword" id="keyword" placeholder="Search for a recipe" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
@@ -49,9 +49,10 @@
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -60,16 +61,16 @@
 </nav>
 
 
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">	
-	
-	<div class="container" th:each="meal : ${meals}">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+	<div class="container" >
         <h2 class="padding-top1">Planned meals</h2>
-		<div class="row row-striped" >
+		<div class="row row-striped" th:each="meal : ${meals}" >
 			<div class="col-2 text-right">
 				<h1 class="display-4"><span th:text="${meal.planned_date.date}" class="bgGray badge badge-secondary"></span></h1>
-				<h2 th:text="${meal.planned_date.month}">OCT</h2>
+				<h2 th:text="${meal.viewShortMonth()}">OCT</h2>
 			</div>
-			<div class="col-10">
+			<div class="col-8">
 				<h3 class="text-uppercase"><strong th:text="${meal.user_selected_recipe.name}"></strong></h3>
 				<ul class="list-inline">
 				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true" th:text="${meal.planned_date.toLocaleString()}"></i></li>
@@ -78,6 +79,20 @@
 				</ul>
 				<p th:text="${meal.user_selected_recipe.description}">Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
+            <div class="col-sm-1 text-right">
+                <form th:action="@{'/users/plan_meal/update/'+ ${meal.id}}" method="post" >
+                    <button class="btn btn-group-sm btn-info" type="submit" >
+                        UPDATE
+                    </button>
+                </form>
+                <br/>
+                <form th:action="@{'/users/plan_meal/delete/'+ ${meal.id}}" method="post" >
+                    <button class="btn btn-group-sm btn-danger" type="submit" >
+                        DELETE
+                    </button>
+                </form>
+            </div>
+
 		</div>
 	</div>
 	

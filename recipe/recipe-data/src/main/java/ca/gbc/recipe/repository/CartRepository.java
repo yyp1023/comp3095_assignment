@@ -9,22 +9,31 @@
 //                          < 101231787 >
 //                          < 101258258 >
 //        * Date: November 7, 2021
-//        * Description: Interface for User Service
+//        * Description: Interface for Favourite Service
+
 
 package ca.gbc.recipe.repository;
 
-import java.util.List;
+import ca.gbc.recipe.model.Favorites;
+import ca.gbc.recipe.model.Recipe;
+import ca.gbc.recipe.model.ShoppingCart;
 import ca.gbc.recipe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface CartRepository extends JpaRepository<ShoppingCart, Long> {
 
-    @Query("from User where username=?1 and password=?2")
-    public User findByUsernamePassword(String username,String password);
+    @Query("SELECT r FROM ShoppingCart r WHERE r.user_cart =?1")
+    public List<Favorites> findMyFav(User user_id);
 
-    @Query("from User where id=?1")
-    public User findUserById(Long userId);
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM ShoppingCart r WHERE r.recipe_cart.id = ?1")
+    void deleteCart(Long id);
 }

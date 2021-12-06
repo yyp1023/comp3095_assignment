@@ -47,9 +47,10 @@
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -58,7 +59,7 @@
 </nav>
 <form th:action="@{/users/plan_meal/createPlan}" th:object="${planMeal}" method="post">
     <div class="container container-fluid">
-      <h2 class="padding-top1">Plan A meal</h2>
+      <h2 class="padding-top1 mt-lg-5">Create Meal Event</h2>
     <div class="padding-top1">
         <h5>Select recipe</h5>
         <select  class="form-select width30" th:field="*{user_selected_recipe}" required>
@@ -67,11 +68,11 @@
             </tr>
         </select>
         <h5>Select Date</h5>
-        <input  type="datetime-local" class="form-control" th:field="*{{planned_date}}"> <br>
+        <input  type="datetime-local" name="planned_date" id="planned_date" class="form-control" th:value="${sdate}" > <br>
         <input type="hidden" th:value="${session.user}" th:field="*{user_meal}">
 
 
-        <button type="submit"  class="btn btn-primary margin-top1">Done</button>
+        <button type="submit"  class="btn btn-primary margin-top1">Add</button>
     </div>
     </div>
 </form>

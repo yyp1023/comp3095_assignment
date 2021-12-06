@@ -18,30 +18,30 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "favorites")
-public class Favorites extends BaseEntity{
+@Table(name = "shopping_cart")
+public class ShoppingCart extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user_fav;
+    private User user_cart;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
-    private Recipe recipe_fav;
+    private Recipe recipe_cart;
 
-    public User getUser_fav() {
-        return user_fav;
+    public User getUser_cart() {
+        return user_cart;
     }
 
-    public void setUser_fav(User user_fav) {
-        this.user_fav = user_fav;
+    public void setUser_cart(User user_cart) {
+        this.user_cart = user_cart;
     }
 
-    public Recipe getRecipe_fav() {
-        return recipe_fav;
+    public Recipe getRecipe_cart() {
+        return recipe_cart;
     }
 
-    public void setRecipe_fav(Recipe recipe_fav) {
-        this.recipe_fav = recipe_fav;
+    public void setRecipe_cart(Recipe recipe_cart) {
+        this.recipe_cart = recipe_cart;
     }
 }
