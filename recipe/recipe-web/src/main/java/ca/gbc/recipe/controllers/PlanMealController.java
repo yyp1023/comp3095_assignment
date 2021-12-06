@@ -15,22 +15,32 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.PlanMeal;
+<<<<<<< HEAD
+=======
 import ca.gbc.recipe.model.Recipe;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 import ca.gbc.recipe.model.User;
 import ca.gbc.recipe.repository.PlanMealRepository;
 import ca.gbc.recipe.repository.RecipeRepository;
 import ca.gbc.recipe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+=======
 import org.springframework.data.repository.query.Param;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+<<<<<<< HEAD
+import java.time.LocalDate;
+=======
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 
 @RequestMapping("/users/plan_meal")
 @Controller
@@ -52,9 +62,14 @@ public class PlanMealController {
     }
 
     @PostMapping(value= "/createPlan")
+<<<<<<< HEAD
+    public String planMealCreated(@ModelAttribute("planMeal") PlanMeal planMeal){
+        planMealService.save(planMeal);
+=======
     public String planMealCreated(@ModelAttribute("planMeal") PlanMeal planMeal, Model model){
         planMealService.save(planMeal);
 
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
         return  "redirect:/users/plan_meal/index";
     }
 
@@ -64,6 +79,13 @@ public class PlanMealController {
         PlanMeal planmeal = new PlanMeal();
         planmeal.setUser_meal(userService.findUserById(user.getId()));
         model.addAttribute(planmeal);
+<<<<<<< HEAD
+        model.addAttribute("localDate", LocalDate.now());
+        model.addAttribute("recipes", recipeService.findAll());
+        return "/plan_meals/createPlan";
+    }
+
+=======
         model.addAttribute("recipes", recipeService.findAll());
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         Date date = new Date();
@@ -98,4 +120,5 @@ public class PlanMealController {
         planMealService.save(planMeal);
         return "redirect:/users/plan_meal/index";
     }
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 }

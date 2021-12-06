@@ -51,10 +51,13 @@ public class RecipeService {
     public List<Recipe> findMyRecipe(User user_id){ return repo.findByUser_id(user_id);}
 
     public Recipe getById(Long id) { return repo.getById(id); }
+<<<<<<< HEAD
+=======
     public Recipe findRecipeById(Long id) { return repo.findRecipeById(id); }
 
 
     public void deleteMyRecipe(Long id) {
         repo.deleteMyRecipe(id);
     }
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 }
