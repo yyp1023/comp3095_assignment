@@ -33,6 +33,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+<<<<<<< HEAD
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -42,6 +43,9 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/shopping_list/view_shoppinglist}">View Shopping List</a></li>
                         <li><a class="dropdown-item" th:href="@{/shopping_list/createShoppingList}">Create Shopping List</a></li>
+=======
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     </ul>
                 </li>
                 <form class="d-flex">
@@ -57,7 +61,10 @@
                     <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
+<<<<<<< HEAD
                     <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
+=======
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -65,6 +72,7 @@
     </div>
 </nav>
 
+<<<<<<< HEAD
 <div class="container container-fluid">
     <div class="col-9 padding-top3">
         <h3>Your Favorite Recipes</h3>
@@ -90,6 +98,61 @@
                     <p class="card-text" th:text="${favorite.recipe_fav.status}"></p>
                 </div>
             </div>
+=======
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+            <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+            <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+            <table id="example" class="table table-bordered" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>Recipe Name</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="recipe : ${favorites}">
+                    <td th:text="${recipe.recipe_fav.name}">Name</td>
+                    <td th:text="${recipe.recipe_fav.type}">Type</td>
+                    <td th:text="${recipe.recipe_fav.time}">Time</td>
+                    <td th:text="${recipe.recipe_fav.description}">Desc</td>
+                    <td>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Options
+                            </a>
+                            <div class="dropdown-menu">
+                                <form th:action="@{/recipes/view_ingredients}">
+                                    <input type="hidden" name="ing_id" id="ing_id" th:value="${recipe.recipe_fav.id}">
+                                    <button class="dropdown-item" type="submit" >
+                                        View Ingredients
+                                    </button>
+                                </form>
+                                <form th:action="@{/recipes/view_steps}">
+                                    <input type="hidden" name="steps_id" id="steps_id" th:value="${recipe.recipe_fav.id}">
+                                    <button class="dropdown-item" type="submit">
+                                        View Steps
+                                    </button>
+                                </form>
+                                <li><a class="dropdown-item" th:href="@{'/users/deleteMyFav/' + ${recipe.recipe_fav.id}}">Delete</a></li>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
         </div>
     </div>
 </div>

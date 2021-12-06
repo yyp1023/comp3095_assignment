@@ -15,7 +15,13 @@ package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.Favorites;
 import ca.gbc.recipe.model.Recipe;
+<<<<<<< HEAD
 import ca.gbc.recipe.model.User;
+=======
+import ca.gbc.recipe.model.ShoppingCart;
+import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.services.CartService;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 import ca.gbc.recipe.services.FavoriteService;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
@@ -24,9 +30,17 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+=======
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
@@ -42,6 +56,11 @@ public class RecipeController {
     UserService userService;
     @Autowired
     FavoriteService favoriteService;
+<<<<<<< HEAD
+=======
+    @Autowired
+    CartService cartService;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 
     @RequestMapping({"", "/", "/index", "index.html"})
     public String listUser(Model model) {
@@ -63,19 +82,50 @@ public class RecipeController {
         return "recipes/index";
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "/marked", method= RequestMethod.POST)
     public String markedAsFav(@ModelAttribute("favorite") Favorites favorites,
                               HttpSession session,
                               @Param("rec_id") Long rec_id){
+=======
+    @RequestMapping(value = "/AddedToFavorite", method= RequestMethod.POST)
+    public String markedAsFav(@ModelAttribute("favorite") Favorites favorites,
+                              HttpSession session, RedirectAttributes redirAttrs,
+                              @Param("ing_id") Long rec_id, Model model){
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
         User user = (User)session.getAttribute("user");
         Recipe recipe = recipeService.getById(rec_id);
 
         favorites.setUser_fav(user);
         favorites.setRecipe_fav(recipe);
         favoriteService.save(favorites);
+<<<<<<< HEAD
         return "recipes/index";
     }
 
+=======
+
+        redirAttrs.addFlashAttribute("success", "Successfully added to favorites");
+        return "redirect:/users/myFavourite";
+    }
+
+    @RequestMapping(value = "/AddedToCart", method= RequestMethod.POST)
+    public String markedAsCart(@ModelAttribute("cart") ShoppingCart carts,
+                               HttpSession session, RedirectAttributes redirAttrs,
+                               @Param("recipe_id") Long id, Model model){
+        User user = (User)session.getAttribute("user");
+        Recipe recipe = recipeService.getById(id);
+        System.out.println(user);
+        System.out.println(recipe);
+        carts.setUser_cart(user);
+        carts.setRecipe_cart(recipe);
+        cartService.save(carts);
+        redirAttrs.addFlashAttribute("success", "Successfully added to favorites");
+        return "recipes/index";
+    }
+
+
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     @RequestMapping("/createRecipe")
     public String createRecipe(Model model){
         Recipe recipe = new Recipe();
@@ -85,7 +135,11 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipe_created", method= RequestMethod.POST)
     public String success(@ModelAttribute("recipe") Recipe recipe,
+<<<<<<< HEAD
                           HttpSession session, ModelMap modelMap,
+=======
+                          HttpSession session, ModelMap modelMap, RedirectAttributes redirAttrs,
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                           Model model){
         model.addAttribute("recipe", recipe);
         session.getAttribute("username");
@@ -93,6 +147,30 @@ public class RecipeController {
         User user = (User)session.getAttribute("user");
         recipe.setUser_id(user);
         recipeService.save(recipe);
+<<<<<<< HEAD
         return "recipes/recipe_created";
     }
+=======
+        redirAttrs.addFlashAttribute("success", "Successfully added to your RECIPES");
+        return "redirect:/users/myRecipe";
+    }
+
+    @RequestMapping({"/view_ingredients"})
+    public String viewIngredients(Model model, ModelMap modelMap, @Param("ing_id") Long ing_id){
+        Recipe selectedRecipe = recipeService.findRecipeById(ing_id);
+        model.addAttribute("selectedRecipe", selectedRecipe);
+        ShoppingCart cart = new ShoppingCart();
+        model.addAttribute("cart", cart);
+        model.addAttribute("ing_id", ing_id);
+        return "recipes/view_ingredients";
+    }
+    @RequestMapping({"/view_steps"})
+    public String viewSteps(Model model, ModelMap modelMap, @Param("steps_id") Long steps_id){
+        Recipe selectedRecipe = recipeService.findRecipeById(steps_id);
+        model.addAttribute("selectedRecipe", selectedRecipe);
+        model.addAttribute("steps_id", steps_id);
+        return "recipes/view_steps";
+    }
+
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 }

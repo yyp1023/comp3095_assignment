@@ -19,12 +19,24 @@ import ca.gbc.recipe.services.FavoriteService;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+=======
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
+=======
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 import javax.servlet.http.HttpSession;
 
 @RequestMapping("/users")
@@ -50,7 +62,10 @@ public class UserController {
         return "users/index";
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     @RequestMapping("/register")
     public String userCreate(Model model){
         User user = new User();
@@ -59,8 +74,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registered", method= RequestMethod.POST)
+<<<<<<< HEAD
     public String success(@ModelAttribute("user") User user){
         userService.save(user);
+=======
+    public String success(@ModelAttribute("user") User user,  HttpSession session){
+        userService.save(user);
+        session.setAttribute("user", user);
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
         return "users/success";
     }
 
@@ -92,4 +113,39 @@ public class UserController {
         model.addAttribute("favorites", favoriteService.findMyFav(user));
         return "users/myFavourite";
     }
+<<<<<<< HEAD
+=======
+
+    @RequestMapping("/resetPassword")
+    public String resetPassword(Model model, HttpSession session) {
+        return "users/resetPassword";
+    }
+
+
+    @RequestMapping(value = {"/resetPassword"}, method = RequestMethod.POST)
+    public String passwordReset(Model model, HttpSession session, @Param("newPassword") String newPassword,
+                                @Param("newPassword") String oldPassword, @Param("newPassword") String confirmPassword,
+                                ModelMap modelMap)  {
+        User user = (User)session.getAttribute("user");
+        User acc = userService.getById(user.getId());
+
+        model.addAttribute("newPassword", newPassword);
+        model.addAttribute("confirmPassword", confirmPassword);
+        model.addAttribute("oldPassword", oldPassword);
+
+        if (acc.getPassword().equalsIgnoreCase(oldPassword)) {
+            if (confirmPassword.equalsIgnoreCase(newPassword)) {
+                acc.setPassword(confirmPassword);
+                userService.save(acc);
+                return "redirect:/users/index";
+            } else {
+                modelMap.put("error", "Password Error");
+                return "/users/resetPassword";
+            }
+        } else {
+            modelMap.put("error", "Password Error");
+            return "/users/resetPassword";
+        }
+    }
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
 }

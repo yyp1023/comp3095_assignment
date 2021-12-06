@@ -33,6 +33,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/users/plan_meal/createPlan}">Plan A Meal</a></li>
+<<<<<<< HEAD
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -42,6 +43,9 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/shopping_list/view_shoppinglist}">View Shopping List</a></li>
                         <li><a class="dropdown-item" th:href="@{/shopping_list/createShoppingList}">Create Shopping List</a></li>
+=======
+                        <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     </ul>
                 </li>
                 <form class="d-flex" th:action="@{/recipes/view_recipe}">
@@ -54,10 +58,17 @@
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+<<<<<<< HEAD
                     <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/plan_meal/planned_meals}">View Planned Meal</a></li>
+=======
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
                 </ul>
             </div>
@@ -66,7 +77,11 @@
 </nav>
 <form th:action="@{/users/plan_meal/createPlan}" th:object="${planMeal}" method="post">
     <div class="container container-fluid">
+<<<<<<< HEAD
       <h2 class="padding-top1">Plan A meal</h2>
+=======
+      <h2 class="padding-top1 mt-lg-5">Create Meal Event</h2>
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     <div class="padding-top1">
         <h5>Select recipe</h5>
         <select  class="form-select width30" th:field="*{user_selected_recipe}" required>
@@ -75,11 +90,19 @@
             </tr>
         </select>
         <h5>Select Date</h5>
+<<<<<<< HEAD
         <input  type="datetime-local" class="form-control" th:field="*{{planned_date}}"> <br>
         <input type="hidden" th:value="${session.user}" th:field="*{user_meal}">
 
 
         <button type="submit"  class="btn btn-primary margin-top1">Done</button>
+=======
+        <input  type="datetime-local" name="planned_date" id="planned_date" class="form-control" th:value="${sdate}" > <br>
+        <input type="hidden" th:value="${session.user}" th:field="*{user_meal}">
+
+
+        <button type="submit"  class="btn btn-primary margin-top1">Add</button>
+>>>>>>> e63f879e186a8b3b91b5b643d4dd886b0c75b1f2
     </div>
     </div>
 </form>
