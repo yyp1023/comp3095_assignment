@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Plan A Meal</title>
+    <title>My Recipe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link th:rel="stylesheet" th:href="@{/css/styles.css}">
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,7 +42,7 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </ul>
-            <div class="dropdown pushLeft">
+            <div class="dropdown pushLeft" >
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.user.username}">
                     User Name
                 </button>
@@ -57,26 +58,72 @@
         </div>
     </div>
 </nav>
-<form th:action="@{/users/plan_meal/update}" th:object="${planMeal}" method="post">
-    <div class="container container-fluid">
-        <h2 class="padding-top1 mt-lg-5">Update Meal Event</h2>
-        <div class="padding-top1">
-            <h5>Select recipe</h5>
-            <select  class="form-select width30" name="user_selected_recipe" id="user_selected_recipe" th:field="*{user_selected_recipe}" required>
-                <tr th:each="recipe: ${recipes}" >
-                    <option th:value="${recipe.id}"><td th:text="${recipe.name}"/></option>
-                </tr>
-            </select>
-            <h5>Select Date</h5>
-            <input type="datetime-local" class="form-control" name="planned_date" id="planned_date" th:field="*{planned_date}"> <br>
-            <input type="hidden" th:value="${session.user}" th:field="*{user_meal}">
-            <input type="hidden" name="planMeal_id" id="planMealId" th:value="${planMeal.id}">
 
-            <button type="submit"  class="btn btn-primary margin-top1">Update</button>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+
         </div>
     </div>
-</form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+            <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+            <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+            <h1>My Cart</h1>
+            <table id="example" class="table table-bordered" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>Recipe Name</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="recipe : ${ShoppingCart}">
+                    <td th:text="${recipe.recipe_fav.name}">Name</td>
+                    <td th:text="${recipe.recipe_fav.type}">Type</td>
+                    <td th:text="${recipe.recipe_fav.time}">Time</td>
+                    <td th:text="${recipe.recipe_fav.description}">Desc</td>
+                    <td>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Options
+                            </a>
+                            <div class="dropdown-menu">
+                                <form th:action="@{/recipes/view_ingredients}">
+                                    <input type="hidden" name="ing_id" id="ing_id" th:value="${recipe.recipe_fav.id}">
+                                    <button class="dropdown-item" type="submit" >
+                                        View Ingredients
+                                    </button>
+                                </form>
+                                <form th:action="@{/recipes/view_steps}">
+                                    <input type="hidden" name="steps_id" id="steps_id" th:value="${recipe.recipe_fav.id}">
+                                    <button class="dropdown-item" type="submit">
+                                        View Steps
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

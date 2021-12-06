@@ -90,13 +90,14 @@ public class RecipeController {
                                @Param("recipe_id") Long id, Model model){
         User user = (User)session.getAttribute("user");
         Recipe recipe = recipeService.getById(id);
-        System.out.println(user);
+        System.out.println(user.getId());
         System.out.println(recipe);
+
         carts.setUser_cart(user);
         carts.setRecipe_cart(recipe);
         cartService.save(carts);
         redirAttrs.addFlashAttribute("success", "Successfully added to favorites");
-        return "recipes/index";
+        return "redirect:/users/myCart";
     }
 
 

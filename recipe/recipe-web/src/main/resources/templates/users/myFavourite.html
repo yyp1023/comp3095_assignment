@@ -46,7 +46,9 @@
                     Account
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/myCart}">My Cart</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
@@ -68,6 +70,7 @@
         <div class="col-lg-10 mt-5 mb-5">
             <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
             <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+            <h1>My Favorites</h1>
             <table id="example" class="table table-bordered" style="width: 100%">
                 <thead>
                 <tr>

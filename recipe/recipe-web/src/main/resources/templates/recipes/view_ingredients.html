@@ -47,7 +47,9 @@
                     User Name
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}">Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/accountInfo}" >Account Info</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/resetPassword}">Password Reset</a></li>
+                    <li><a class="dropdown-item" th:href="@{/users/myCart}">My Cart</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myRecipe}">My Recipes</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/myFavourite}">My Favourites</a></li>
                     <li><a class="dropdown-item" th:href="@{/users/logout}">Log Out</a></li>
@@ -78,7 +80,7 @@
                     <p th:text="${selectedRecipe.id}"></p>
                     <form th:action="@{/recipes/AddedToCart}" th:object="${cart}" method="post" >
                         <input type="hidden" name="ing_id" id="ing_id" th:value="${selectedRecipe.id}">
-                        <button type="submit" th:text="${selectedRecipe.id}">
+                        <button type="submit">
                             Add To Cart
                         </button>
                     </form>
