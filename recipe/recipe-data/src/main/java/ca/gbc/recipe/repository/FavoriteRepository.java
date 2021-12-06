@@ -18,9 +18,11 @@ import ca.gbc.recipe.model.Favorites;
 import ca.gbc.recipe.model.Recipe;
 import ca.gbc.recipe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -28,4 +30,14 @@ public interface FavoriteRepository extends JpaRepository<Favorites, Long> {
 
     @Query("SELECT r FROM Favorites r WHERE r.user_fav =?1")
     public List<Favorites> findMyFav(User user_id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Favorites r WHERE r.recipe_fav.id = ?1")
+    void deleteUsersByRecipe(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("SELECT r FROM Favorites r WHERE r.recipe_fav.id = ?1")
+    void checkIfInside(Long id);
 }

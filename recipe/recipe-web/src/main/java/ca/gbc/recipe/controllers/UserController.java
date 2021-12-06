@@ -15,6 +15,7 @@
 package ca.gbc.recipe.controllers;
 
 import ca.gbc.recipe.model.User;
+import ca.gbc.recipe.services.CartService;
 import ca.gbc.recipe.services.FavoriteService;
 import ca.gbc.recipe.services.RecipeService;
 import ca.gbc.recipe.services.UserService;
@@ -23,10 +24,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -41,7 +40,8 @@ public class UserController {
     RecipeService recipeService;
     @Autowired
     FavoriteService favoriteService;
-
+    @Autowired
+    CartService cartService;
     @RequestMapping({"", "/", "/index", "index.html"})
     public String listUser(Model model) {
 //        model.addAttribute("users", userService.findAll());
@@ -86,15 +86,52 @@ public class UserController {
     @RequestMapping("/myRecipe")
     public String findRecipes(Model model, HttpSession session) {
         User user = (User)session.getAttribute("user");
-        model.addAttribute("recipes", recipeService.findMyRecipe(user));
+
+        if (ObjectUtils.isEmpty(recipeService.findMyRecipe(user))){
+            model.addAttribute("error", "There's no recipe in the meantime");
+        }
+        else{
+            model.addAttribute("recipes", recipeService.findMyRecipe(user));
+            model.addAttribute("user_id", user.getId());
+        }
         return "users/myRecipe";
     }
 
     @RequestMapping("/myFavourite")
-    public String findFavoriteRecipes(Model model, HttpSession session) {
+    public String findFavoriteRecipes(Model model, HttpSession session, RedirectAttributes redirAttrs) {
         User user = (User)session.getAttribute("user");
-        model.addAttribute("favorites", favoriteService.findMyFav(user));
+
+        if (ObjectUtils.isEmpty(favoriteService.findMyFav(user))){
+            model.addAttribute("error", "There's no favorite in the meantime");
+        }
+        else{
+            model.addAttribute("favorites", favoriteService.findMyFav(user));
+        }
         return "users/myFavourite";
+    }
+
+    @RequestMapping("/myCart")
+    public String findShoppingCart(Model model, HttpSession session, RedirectAttributes redirAttrs) {
+        User user = (User)session.getAttribute("user");
+
+        if (ObjectUtils.isEmpty(cartService.findMyShoppingCart(user))){
+            model.addAttribute("error", "Your shopping list is empty");
+        }
+        else{
+            model.addAttribute("ShoppingCart", cartService.findMyShoppingCart(user));
+        }
+        return "users/myCart";
+    }
+
+    @RequestMapping("deleteMyFav/{sid}")
+    public String deleteMyFav(@PathVariable(name="sid") Long sid, HttpSession session) {
+        favoriteService.deleteUsersByRecipe(sid);
+        return "redirect:/users/myFavourite";
+    }
+    @RequestMapping("deleteMyRecipe/{sid}")
+    public String deleteMyRecipe(@PathVariable(name="sid") Long sid, HttpSession session) {
+        recipeService.deleteMyRecipe(sid);
+        return "redirect:/users/myRecipe";
     }
 
     @RequestMapping("/resetPassword")
